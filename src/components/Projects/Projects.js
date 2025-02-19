@@ -46,10 +46,10 @@ function Projects() {
             <ProjectCard
               imgPath={bitsOfCode}
               isBlog={false}
-              title="National HealthCare Filling System"
+              title="LUNGA BASIC E-COMMERCE APP"
               description="NHCFS."
-              ghLink="https://github.com/soumyajit4419/Bits-0f-C0de"
-              demoLink="https://blogs.soumya-jit.tech/"
+              ghLink="https://github.com/gitLunga/basic-ecommerce-app.git"
+              demoLink="https://lunga-basic-ecommerce-app.netlify.app"
             />
           </Col>
 
