@@ -47,7 +47,7 @@ function Projects() {
               imgPath={bitsOfCode}
               isBlog={false}
               title="LUNGA BASIC E-COMMERCE APP"
-              description="NHCFS."
+              description="A very simple web application for selling items online adding them to a cart."
               ghLink="https://github.com/gitLunga/basic-ecommerce-app.git"
               demoLink="https://lunga-basic-ecommerce-app.netlify.app"
             />
