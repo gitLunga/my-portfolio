@@ -59,8 +59,8 @@ function Projects() {
               isBlog={false}
               title="Hotel Booking System"
               description="yyyyyyyy"
-              ghLink="https://github.com/soumyajit4419/Editor.io"
-              demoLink="https://editor.soumya-jit.tech/"
+              ghLink="https://github.com/gitLunga/Hotel-Booking-System.git"
+              demoLink="https://lunga-basic-hotelbooking.netlify.app"
             />
           </Col>
 
