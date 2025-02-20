@@ -4,10 +4,14 @@ import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
 //import leaf from "../../Assets/Projects/leaf.png";
 //import emotion from "../../Assets/Projects/emotion.png";
+import eComPic from "../../Assets/Projects/e -commerce pic.png";
+import hotelBookingPic from "../../Assets/Projects/hotelBookingPic.png";
+
 import editor from "../../Assets/Projects/codeEditor.png";
+
 import chatify from "../../Assets/Projects/chatify.png";
 //import suicide from "../../Assets/Projects/suicide.png";
-import bitsOfCode from "../../Assets/Projects/blog.png";
+//import bitsOfCode from "../../Assets/Projects/blog.png";
 
 function Projects() {
   return (
@@ -44,7 +48,7 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={bitsOfCode}
+              imgPath={eComPic}
               isBlog={false}
               title="LUNGA BASIC E-COMMERCE APP"
               description="A very simple web application for selling items online adding them to a cart."
@@ -55,7 +59,7 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={editor}
+              imgPath={hotelBookingPic}
               isBlog={false}
               title="Hotel Booking System"
               description="yyyyyyyy"
