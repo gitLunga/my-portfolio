@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
-//import pdf from "../../Assets/../Assets/Soumyajit_Behera-BIT_MESRA.pdf";
-import pdf from "../../Assets/../Assets/lunga updated cv.pdf";
+import pdf from "../../Assets/../Assets/LUNGA CVV.pdf";
 
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -12,6 +11,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 function ResumeNew() {
   const [width, setWidth] = useState(1200);
+  const [pageNumber, setPageNumber] = useState(1);
+  const totalPages = 2; // Set total number of pages
 
   useEffect(() => {
     setWidth(window.innerWidth);
@@ -35,8 +36,31 @@ function ResumeNew() {
 
         <Row className="resume">
           <Document file={pdf} className="d-flex justify-content-center">
-            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
+            <Page pageNumber={pageNumber} scale={width > 786 ? 1.7 : 0.6} />
           </Document>
+        </Row>
+
+        {/* Pagination Buttons */}
+        <Row style={{ justifyContent: "center", position: "relative", marginTop: "10px" }}>
+          <Button
+            variant="secondary"
+            onClick={() => setPageNumber((prev) => Math.max(prev - 1, 1))}
+            disabled={pageNumber === 1}
+            style={{ marginRight: "10px" }}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() => setPageNumber((prev) => Math.min(prev + 1, totalPages))}
+            disabled={pageNumber === totalPages}
+          >
+            Next
+          </Button>
+        </Row>
+
+        <Row style={{ justifyContent: "center", position: "relative", marginTop: "10px" }}>
+          <p>Page {pageNumber} of {totalPages}</p>
         </Row>
 
         <Row style={{ justifyContent: "center", position: "relative" }}>

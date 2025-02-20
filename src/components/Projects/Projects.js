@@ -2,16 +2,19 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
+
 //import leaf from "../../Assets/Projects/leaf.png";
 //import emotion from "../../Assets/Projects/emotion.png";
-import eComPic from "../../Assets/Projects/e -commerce pic.png";
-import hotelBookingPic from "../../Assets/Projects/hotelBookingPic.png";
-
-import editor from "../../Assets/Projects/codeEditor.png";
-
-import chatify from "../../Assets/Projects/chatify.png";
+//import editor from "../../Assets/Projects/codeEditor.png";
+//import chatify from "../../Assets/Projects/chatify.png";
 //import suicide from "../../Assets/Projects/suicide.png";
 //import bitsOfCode from "../../Assets/Projects/blog.png";
+
+import eComPic from "../../Assets/Projects/e -commerce pic.png";
+import hotelBookingPic from "../../Assets/Projects/hotelBookingPic.png";
+import TshwaneFindPic from "../../Assets/Projects/TshwaneFindPic.jpg";
+import tslsPic from "../../Assets/Projects/tslsPic.jpg";
+
 
 function Projects() {
   return (
@@ -27,7 +30,7 @@ function Projects() {
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={editor}
+              imgPath={TshwaneFindPic}
               isBlog={false}
               title="Tshwane Find"
               description="TVH web app to manage facilities intergrated with various payment methods using APIs, and also Argumented Reality."
@@ -37,7 +40,7 @@ function Projects() {
           </Col>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={chatify}
+              imgPath={tslsPic}
               isBlog={false}
               title="Technical Support Logging System"
               description="technical Support "
