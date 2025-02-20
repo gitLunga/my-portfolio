@@ -13,7 +13,7 @@ import Particle from "../Particle";
 import eComPic from "../../Assets/Projects/e -commerce pic.png";
 import hotelBookingPic from "../../Assets/Projects/hotelBookingPic.png";
 import TshwaneFindPic from "../../Assets/Projects/TshwaneFindPic.jpg";
-import tslsPic from "../../Assets/Projects/tslsPic.jpg";
+//import tslsPic from "../../Assets/Projects/tslsPic.jpg";
 
 
 function Projects() {
@@ -35,10 +35,10 @@ function Projects() {
               title="Tshwane Find"
               description="TVH web app to manage facilities intergrated with various payment methods using APIs, and also Argumented Reality."
               ghLink="https://github.com/KISMETtakk/TshwaneFind.git"
-              demoLink="https://editor.soumya-jit.tech/"
+             // demoLink="https://editor.soumya-jit.tech/"
             />
           </Col>
-          <Col md={4} className="project-card">
+          {/* <Col md={4} className="project-card">
             <ProjectCard
               imgPath={tslsPic}
               isBlog={false}
@@ -47,7 +47,7 @@ function Projects() {
               ghLink="https://github.com/soumyajit4419/Chatify"
               demoLink="https://chatify-49.web.app/"
             />
-          </Col>
+          </Col> */}
 
           <Col md={4} className="project-card">
             <ProjectCard
