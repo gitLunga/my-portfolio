@@ -13,6 +13,11 @@ import Particle from "../Particle";
 import eComPic from "../../Assets/Projects/e -commerce pic.png";
 import hotelBookingPic from "../../Assets/Projects/hotelBookingPic.png";
 import TshwaneFindPic from "../../Assets/Projects/TshwaneFindPic.jpg";
+
+import ninoServices from "../../Assets/Projects/nino-services.png";
+import djmega from "../../Assets/Projects/mega-services.png";
+import phantom from "../../Assets/Projects/phantom-services.png";
+
 //import tslsPic from "../../Assets/Projects/tslsPic.jpg";
 
 
@@ -33,9 +38,9 @@ function Projects() {
               imgPath={TshwaneFindPic}
               isBlog={false}
               title="Tshwane Find"
-              description="TVH web app to manage facilities intergrated with various payment methods using APIs, and also Argumented Reality."
+              description="A web application developed for TVH to streamline the management of various facilities, offering users an intuitive interface for booking and managing amenities. The system integrates multiple payment methods through APIs and incorporates augmented reality (AR) features to provide an interactive experience for users. This project aims to enhance the user experience with real-time data access, making it a versatile tool for both administrative users and clients."
               ghLink="https://github.com/KISMETtakk/TshwaneFind.git"
-             // demoLink="https://editor.soumya-jit.tech/"
+            // demoLink="https://editor.soumya-jit.tech/"
             />
           </Col>
           {/* <Col md={4} className="project-card">
@@ -51,10 +56,22 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
+              imgPath={hotelBookingPic}
+              isBlog={false}
+              title="Technical Support Logging System"
+              description="A web application that allows users to log technical support requests and track their issue status.
+               System also supports user authentication and role-based access control. Furthermore, facilitates real time communication between users and technician agents."
+              ghLink="https://github.com/gitLunga/Hotel-Booking-System.git"
+              demoLink="https://lunga-basic-hotelbooking.netlify.app"
+            />
+          </Col>
+
+          <Col md={4} className="project-card">
+            <ProjectCard
               imgPath={eComPic}
               isBlog={false}
               title="LUNGA BASIC E-COMMERCE APP"
-              description="A very simple web application for selling items online adding them to a cart."
+              description="A user-friendly e-commerce platform built to facilitate the buying and selling of products online. The app allows users to browse items, add them to their shopping cart, and proceed to checkout. It supports basic functionalities such as product categorization, quantity adjustment, and simple payment integration. Designed with simplicity in mind, this app serves as an entry-level e-commerce solution for individuals looking to start selling products online."
               ghLink="https://github.com/gitLunga/basic-ecommerce-app.git"
               demoLink="https://lunga-basic-ecommerce-app.netlify.app"
             />
@@ -65,11 +82,52 @@ function Projects() {
               imgPath={hotelBookingPic}
               isBlog={false}
               title="Hotel Booking System"
-              description="yyyyyyyy"
+              description="A comprehensive web application designed to allow users to easily browse available hotel rooms, book accommodations, and manage their reservations. The system supports user authentication, role-based access control for admins and customers, and real-time communication between users and hotel staff. It includes features like search filters, room availability tracking, and an integrated payment system, providing a seamless experience for both customers and service providers."
               ghLink="https://github.com/gitLunga/Hotel-Booking-System.git"
               demoLink="https://lunga-basic-hotelbooking.netlify.app"
             />
           </Col>
+
+          <p style={{ color: "gray" }}>
+            Here are some few personal projects I have worked on.
+          </p>
+
+            <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={ninoServices}
+              isBlog={false}
+              title="Nino Services e-commerce web application"
+              description=""
+              ghLink="https://github.com/gitLunga/Hotel-Booking-System.git"
+              demoLink="https://nino-services-store.netlify.app"
+            />
+          </Col>
+
+            <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={djmega}
+              isBlog={false}
+              title="DJ Mega portfolio website"
+              description="A comprehensive web application designed to allow users to easily browse available hotel rooms, book accommodations, and manage their reservations. The system supports user authentication, role-based access control for admins and customers, and real-time communication between users and hotel staff. It includes features like search filters, room availability tracking, and an integrated payment system, providing a seamless experience for both customers and service providers."
+              ghLink="https://github.com/gitLunga/Hotel-Booking-System.git"
+              demoLink="https://djmega-portfolio.netlify.app"
+            />
+          </Col>
+
+            <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={phantom}
+              isBlog={false}
+              title="The Phantom Clothing e-commerce web application"
+              description="A comprehensive web application designed to allow users to easily browse available hotel rooms, book accommodations, and manage their reservations. The system supports user authentication, role-based access control for admins and customers, and real-time communication between users and hotel staff. It includes features like search filters, room availability tracking, and an integrated payment system, providing a seamless experience for both customers and service providers."
+              ghLink="https://github.com/gitLunga/Hotel-Booking-System.git"
+              demoLink="https://thephantomclothing.netlify.app"
+            />
+          </Col>
+
+
+
+
 
 
 
