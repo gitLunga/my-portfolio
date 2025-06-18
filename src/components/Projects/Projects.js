@@ -92,35 +92,44 @@ function Projects() {
             Here are some few personal projects I have worked on.
           </p>
 
-            <Col md={4} className="project-card">
+          <Col md={4} className="project-card">
             <ProjectCard
               imgPath={ninoServices}
               isBlog={false}
               title="Nino Services e-commerce web application"
-              description=""
-              ghLink="https://github.com/gitLunga/Hotel-Booking-System.git"
+              description="A full-featured e-commerce platform for home services, 
+              built with React and Node.js.
+             The application includes product listings, 
+             shopping cart functionality, secure payment processing,
+              and admin dashboard. 
+              Features user authentication, service categorization,
+               and responsive design for optimal mobile experience."
+              ghLink="https://github.com/gitLunga/nino-services-store.git"
               demoLink="https://nino-services-store.netlify.app"
             />
           </Col>
 
-            <Col md={4} className="project-card">
+          <Col md={4} className="project-card">
             <ProjectCard
               imgPath={djmega}
               isBlog={false}
               title="DJ Mega portfolio website"
-              description="A comprehensive web application designed to allow users to easily browse available hotel rooms, book accommodations, and manage their reservations. The system supports user authentication, role-based access control for admins and customers, and real-time communication between users and hotel staff. It includes features like search filters, room availability tracking, and an integrated payment system, providing a seamless experience for both customers and service providers."
-              ghLink="https://github.com/gitLunga/Hotel-Booking-System.git"
+              description="A modern artist portfolio showcasing DJ Mega's work, events, and music. Built with React and GSAP animations for smooth transitions. 
+              Includes audio player integration, event calendar, photo gallery, and contact form. Fully responsive design with performance optimization for media-heavy content."
+              ghLink="https://github.com/gitLunga/djmega-portfolio.git"
               demoLink="https://djmega-portfolio.netlify.app"
             />
           </Col>
 
-            <Col md={4} className="project-card">
+          <Col md={4} className="project-card">
             <ProjectCard
               imgPath={phantom}
               isBlog={false}
               title="The Phantom Clothing e-commerce web application"
-              description="A comprehensive web application designed to allow users to easily browse available hotel rooms, book accommodations, and manage their reservations. The system supports user authentication, role-based access control for admins and customers, and real-time communication between users and hotel staff. It includes features like search filters, room availability tracking, and an integrated payment system, providing a seamless experience for both customers and service providers."
-              ghLink="https://github.com/gitLunga/Hotel-Booking-System.git"
+              description="High-end fashion e-commerce platform featuring t-shirt catalog, size guides, wishlists, and secure checkout using Whatsapp integration. 
+              Implemented with React, Redux for state management. Includes advanced features like product zoom, 
+              color swatches, and personalized recommendations based on browsing history."
+              ghLink="https://github.com/gitLunga/the-phantom-clothing.git"
               demoLink="https://thephantomclothing.netlify.app"
             />
           </Col>
