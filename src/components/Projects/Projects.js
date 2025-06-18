@@ -97,13 +97,7 @@ function Projects() {
               imgPath={ninoServices}
               isBlog={false}
               title="Nino Services e-commerce web application"
-              description="A full-featured e-commerce platform for home services, 
-              built with React and Node.js.
-             The application includes product listings, 
-             shopping cart functionality, secure payment processing,
-              and admin dashboard. 
-              Features user authentication, service categorization,
-               and responsive design for optimal mobile experience."
+              description="A modern frontend e-commerce demo built with TypeScript and React, showcasing multi-category shopping for accessories, beauty products, and home goods. Features WhatsApp integration for product inquiries, responsive design optimized for African mobile users, and interactive product browsing. Demonstrates clean state management and UI patterns for scalable e-commerce applications"
               ghLink="https://github.com/gitLunga/nino-services-store.git"
               demoLink="https://nino-services-store.netlify.app"
             />
@@ -114,8 +108,9 @@ function Projects() {
               imgPath={djmega}
               isBlog={false}
               title="DJ Mega portfolio website"
-              description="A modern artist portfolio showcasing DJ Mega's work, events, and music. Built with React and GSAP animations for smooth transitions. 
-              Includes audio player integration, event calendar, photo gallery, and contact form. Fully responsive design with performance optimization for media-heavy content."
+              description="A dynamic artist portfolio built with React and TypeScript, featuring smooth animations and transitions. 
+    Showcases music projects, event calendar, and photo gallery with a responsive layout optimized for all devices. 
+    Includes direct booking functionality via email integration and a contact form for fan inquiries"
               ghLink="https://github.com/gitLunga/djmega-portfolio.git"
               demoLink="https://djmega-portfolio.netlify.app"
             />
@@ -126,9 +121,9 @@ function Projects() {
               imgPath={phantom}
               isBlog={false}
               title="The Phantom Clothing e-commerce web application"
-              description="High-end fashion e-commerce platform featuring t-shirt catalog, size guides, wishlists, and secure checkout using Whatsapp integration. 
-              Implemented with React, Redux for state management. Includes advanced features like product zoom, 
-              color swatches, and personalized recommendations based on browsing history."
+              description="A React/Redux e-commerce demo specializing in premium t-shirts, featuring WhatsApp order integration. 
+    Includes product zoom, color selection, and responsive design. Demonstrates advanced frontend patterns 
+    for product browsing and wishlist functionality without backend dependencies."
               ghLink="https://github.com/gitLunga/the-phantom-clothing.git"
               demoLink="https://thephantomclothing.netlify.app"
             />
