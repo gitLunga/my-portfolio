@@ -43,16 +43,6 @@ function Projects() {
             // demoLink="https://editor.soumya-jit.tech/"
             />
           </Col>
-          {/* <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={tslsPic}
-              isBlog={false}
-              title="Technical Support Logging System"
-              description="technical Support "
-              ghLink="https://github.com/soumyajit4419/Chatify"
-              demoLink="https://chatify-49.web.app/"
-            />
-          </Col> */}
 
           <Col md={4} className="project-card">
             <ProjectCard
@@ -128,12 +118,6 @@ function Projects() {
               demoLink="https://thephantomclothing.netlify.app"
             />
           </Col>
-
-
-
-
-
-
 
         </Row>
       </Container>
