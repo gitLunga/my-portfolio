@@ -37,7 +37,7 @@ function Home2() {
                 <b className="purple"> frontend and backend technologies.</b>
               </i>
               I love working with
-              <b className="purple"> React.js, Node.js, </b> and other modern JavaScript frameworks,
+              <b className="purple"> React.js, Node.js, TypeScript </b> and other modern JavaScript frameworks,
               ensuring that my applications are fast, responsive, and user-friendly.
               <br />
               <br />
