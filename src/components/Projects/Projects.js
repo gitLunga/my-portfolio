@@ -11,27 +11,34 @@ import hotelBookingPic from "../../Assets/Projects/hotelBookingPic.png"
 import TshwaneFindPic from "../../Assets/Projects/TshwaneFindPic.jpg"
 
 //nino
-import ninoServices from "../../Assets/Projects/nino-services.png"
-import ninoServices2 from "../../Assets/Projects/nino-services2.png"
-import ninoServices3 from "../../Assets/Projects/nino-services3.png"
-import ninoServices4 from "../../Assets/Projects/nino-services4.png"
-import ninoServices5 from "../../Assets/Projects/nino-services5.png"
-import ninoServices6 from "../../Assets/Projects/nino-services6.png"
-import ninoServices7 from "../../Assets/Projects/nino-services7.png"
+import ninoServices from "../../Assets/Projects/nino/nino-services.png"
+import ninoServices2 from "../../Assets/Projects/nino/nino-services2.png"
+import ninoServices3 from "../../Assets/Projects/nino/nino-services3.png"
+import ninoServices4 from "../../Assets/Projects/nino/nino-services4.png"
+import ninoServices5 from "../../Assets/Projects/nino/nino-services5.png"
+import ninoServices6 from "../../Assets/Projects/nino/nino-services6.png"
+import ninoServices7 from "../../Assets/Projects/nino/nino-services7.png"
 
 //mega
-import djmega from "../../Assets/Projects/mega-services.png"
-import djmega2 from "../../Assets/Projects/mega-services2.png"
-import djmega3 from "../../Assets/Projects/mega-services3.png"
-import djmega4 from "../../Assets/Projects/mega-services4.png"
+import djmega from "../../Assets/Projects/djmega/mega-services.png"
+import djmega2 from "../../Assets/Projects/djmega/mega-services2.png"
+import djmega3 from "../../Assets/Projects/djmega/mega-services3.png"
+import djmega4 from "../../Assets/Projects/djmega/mega-services4.png"
 
 //phantom
-import phantom from "../../Assets/Projects/phantom-services.png"
-import phantom2 from "../../Assets/Projects/phantom-services2.png"
-import phantom3 from "../../Assets/Projects/phantom-services3.png"
-import phantom4 from "../../Assets/Projects/phantom-services4.png"
-import phantom5 from "../../Assets/Projects/phantom-services5.png"
+import phantom from "../../Assets/Projects/phantom/phantom-services.png"
+import phantom2 from "../../Assets/Projects/phantom/phantom-services2.png"
+import phantom3 from "../../Assets/Projects/phantom/phantom-services3.png"
+import phantom4 from "../../Assets/Projects/phantom/phantom-services4.png"
+import phantom5 from "../../Assets/Projects/phantom/phantom-services5.png"
 
+//rvbber
+import rvbber from "../../Assets/Projects/rvb/rvb.png"
+import rvbber2 from "../../Assets/Projects/rvb/rvb2.png"
+import rvbber3 from "../../Assets/Projects/rvb/rvb3.png"
+import rvbber4 from "../../Assets/Projects/rvb/rvb4.png"
+import rvbber5 from "../../Assets/Projects/rvb/rvb5.png"
+import rvbber6 from "../../Assets/Projects/rvb/rvb6.png"
 // Enhanced project data with additional details
 const projectsData = [
   {
@@ -156,6 +163,26 @@ const projectsData = [
     ghLink: "https://github.com/gitLunga/the-phantom-clothing.git",
     demoLink: "https://thephantomclothing.netlify.app",
     images: [phantom, phantom2, phantom3, phantom4, phantom5],
+    technologies: ["React", "Redux", "WhatsApp API", "CSS3", "Responsive Design"],
+    features: [
+      "Premium t-shirt specialization",
+      "WhatsApp order integration",
+      "Product zoom functionality",
+      "Color selection system",
+      "Wishlist management",
+      "Advanced frontend patterns",
+    ],
+  },
+
+   {
+    id: "dj rvbber services",
+    imgPath: phantom,
+    title: "The Phantom Clothing e-commerce web application",
+    description:
+      "A React/Redux e-commerce demo specializing in premium t-shirts, featuring WhatsApp order integration. Includes product zoom, color selection, and responsive design. Demonstrates advanced frontend patterns for product browsing and wishlist functionality without backend dependencies.",
+    ghLink: "https://github.com/gitLunga/rvbber-services.git",
+    demoLink: "https://rvbber-services.netlify.app/",
+    images: [rvbber, rvbber2, rvbber3, rvbber4, rvbber5, rvbber6],
     technologies: ["React", "Redux", "WhatsApp API", "CSS3", "Responsive Design"],
     features: [
       "Premium t-shirt specialization",
