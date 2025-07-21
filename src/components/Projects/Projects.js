@@ -25,7 +25,12 @@ import djmega2 from "../../Assets/Projects/mega-services2.png"
 import djmega3 from "../../Assets/Projects/mega-services3.png"
 import djmega4 from "../../Assets/Projects/mega-services4.png"
 
+//phantom
 import phantom from "../../Assets/Projects/phantom-services.png"
+import phantom2 from "../../Assets/Projects/phantom-services2.png"
+import phantom3 from "../../Assets/Projects/phantom-services3.png"
+import phantom4 from "../../Assets/Projects/phantom-services4.png"
+import phantom5 from "../../Assets/Projects/phantom-services5.png"
 
 // Enhanced project data with additional details
 const projectsData = [
@@ -150,7 +155,7 @@ const projectsData = [
       "A React/Redux e-commerce demo specializing in premium t-shirts, featuring WhatsApp order integration. Includes product zoom, color selection, and responsive design. Demonstrates advanced frontend patterns for product browsing and wishlist functionality without backend dependencies.",
     ghLink: "https://github.com/gitLunga/the-phantom-clothing.git",
     demoLink: "https://thephantomclothing.netlify.app",
-    images: [phantom, phantom, phantom, phantom],
+    images: [phantom, phantom2, phantom3, phantom4, phantom5],
     technologies: ["React", "Redux", "WhatsApp API", "CSS3", "Responsive Design"],
     features: [
       "Premium t-shirt specialization",
