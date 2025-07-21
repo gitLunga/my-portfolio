@@ -11,6 +11,10 @@ import hotelBookingPic from "../../Assets/Projects/hotelBookingPic.png"
 import TshwaneFindPic from "../../Assets/Projects/TshwaneFindPic.jpg"
 import ninoServices from "../../Assets/Projects/nino-services.png"
 import djmega from "../../Assets/Projects/mega-services.png"
+import djmega2 from "../../Assets/Projects/mega-services2.png"
+import djmega3 from "../../Assets/Projects/mega-services3.png"
+import djmega4 from "../../Assets/Projects/mega-services4.png"
+
 import phantom from "../../Assets/Projects/phantom-services.png"
 
 // Enhanced project data with additional details
@@ -117,7 +121,7 @@ const projectsData = [
       "A dynamic artist portfolio built with React and TypeScript, featuring smooth animations and transitions. Showcases music projects, event calendar, and photo gallery with a responsive layout optimized for all devices. Includes direct booking functionality via email integration and a contact form for fan inquiries",
     ghLink: "https://github.com/gitLunga/djmega-portfolio.git",
     demoLink: "https://djmega-portfolio.netlify.app",
-    images: [djmega, djmega, djmega, djmega],
+    images: [djmega, djmega2, djmega3, djmega4],
     technologies: ["React", "TypeScript", "Framer Motion", "Email.js", "CSS3"],
     features: [
       "Dynamic artist portfolio",
