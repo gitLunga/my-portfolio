@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
-import myResumePdf from "../../Assets/LN NTSHINGILA CV.pdf"; // Make sure this path is correct
+import myResumePdf from "../../Assets/Lunga Nhlakanipho Ntshingil2.pdf"; // Make sure this path is correct
 
 
 

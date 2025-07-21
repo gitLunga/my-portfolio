@@ -59,7 +59,7 @@ const projectsData = [
     description:
       "A web application that allows users to log technical support requests and track their issue status. System also supports user authentication and role-based access control. Furthermore, facilitates real time communication between users and technician agents.",
     ghLink: "https://github.com/gitLunga/Hotel-Booking-System.git",
-    demoLink: "https://lunga-basic-hotelbooking.netlify.app",
+    // demoLink: "https://lunga-basic-hotelbooking.netlify.app",
     images: [hotelBookingPic, hotelBookingPic, hotelBookingPic, hotelBookingPic],
     technologies: ["React", "Node.js", "Socket.io", "MongoDB", "JWT Authentication"],
     features: [
@@ -78,7 +78,7 @@ const projectsData = [
     description:
       "A user-friendly e-commerce platform built to facilitate the buying and selling of products online. The app allows users to browse items, add them to their shopping cart, and proceed to checkout. It supports basic functionalities such as product categorization, quantity adjustment, and simple payment integration.",
     ghLink: "https://github.com/gitLunga/basic-ecommerce-app.git",
-    demoLink: "https://lunga-basic-ecommerce-app.netlify.app",
+    // demoLink: "https://lunga-basic-ecommerce-app.netlify.app",
     images: [eComPic, eComPic, eComPic, eComPic],
     technologies: ["React", "Redux", "Stripe API", "Firebase", "CSS3"],
     features: [
@@ -97,7 +97,7 @@ const projectsData = [
     description:
       "A comprehensive web application designed to allow users to easily browse available hotel rooms, book accommodations, and manage their reservations. The system supports user authentication, role-based access control for admins and customers, and real-time communication between users and hotel staff.",
     ghLink: "https://github.com/gitLunga/Hotel-Booking-System.git",
-    demoLink: "https://lunga-basic-hotelbooking.netlify.app",
+    // demoLink: "https://lunga-basic-hotelbooking.netlify.app",
     images: [hotelBookingPic, hotelBookingPic, hotelBookingPic, hotelBookingPic],
     technologies: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
     features: [
