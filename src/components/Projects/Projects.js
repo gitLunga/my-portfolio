@@ -87,7 +87,7 @@ const projectsData = [
       "Quantity adjustment system",
       "Payment integration",
       "User-friendly checkout process",
-      "Responsive design",
+      "Responsive web design",
     ],
   },
   {
