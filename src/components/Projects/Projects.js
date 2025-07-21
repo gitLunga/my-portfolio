@@ -9,7 +9,17 @@ import { CgWebsite } from "react-icons/cg"
 import eComPic from "../../Assets/Projects/e -commerce pic.png"
 import hotelBookingPic from "../../Assets/Projects/hotelBookingPic.png"
 import TshwaneFindPic from "../../Assets/Projects/TshwaneFindPic.jpg"
+
+//nino
 import ninoServices from "../../Assets/Projects/nino-services.png"
+import ninoServices2 from "../../Assets/Projects/nino-services2.png"
+import ninoServices3 from "../../Assets/Projects/nino-services3.png"
+import ninoServices4 from "../../Assets/Projects/nino-services4.png"
+import ninoServices5 from "../../Assets/Projects/nino-services5.png"
+import ninoServices6 from "../../Assets/Projects/nino-services6.png"
+import ninoServices7 from "../../Assets/Projects/nino-services7.png"
+
+//mega
 import djmega from "../../Assets/Projects/mega-services.png"
 import djmega2 from "../../Assets/Projects/mega-services2.png"
 import djmega3 from "../../Assets/Projects/mega-services3.png"
@@ -102,7 +112,7 @@ const projectsData = [
       "A modern frontend e-commerce demo built with TypeScript and React, showcasing multi-category shopping for accessories, beauty products, and home goods. Features WhatsApp integration for product inquiries, responsive design optimized for African mobile users, and interactive product browsing.",
     ghLink: "https://github.com/gitLunga/nino-services-store.git",
     demoLink: "https://nino-services-store.netlify.app",
-    images: [ninoServices, ninoServices, ninoServices, ninoServices],
+    images: [ninoServices, ninoServices2, ninoServices3, ninoServices4, ninoServices5, ninoServices6, ninoServices7],
     technologies: ["TypeScript", "React", "WhatsApp API", "Responsive Design", "CSS3"],
     features: [
       "Multi-category product showcase",
