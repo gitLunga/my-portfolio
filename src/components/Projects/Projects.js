@@ -6,6 +6,8 @@ import Particle from "../Particle"
 import { BsGithub } from "react-icons/bs"
 import { CgWebsite } from "react-icons/cg"
 
+import tsls from "../../Assets/Screenshot (162).png"
+
 import eComPic from "../../Assets/Projects/e -commerce pic.png"
 import hotelBookingPic from "../../Assets/Projects/hotelBookingPic.png"
 import TshwaneFindPic from "../../Assets/Projects/TshwaneFindPic.jpg"
@@ -33,6 +35,8 @@ import phantom4 from "../../Assets/Projects/phantom/phantom-services4.png"
 import phantom5 from "../../Assets/Projects/phantom/phantom-services5.png"
 
 //rvbber
+import rvbHome from "../../Assets/Projects/rvb/Screenshot (227).png"
+
 import rvbber from "../../Assets/Projects/rvb/rvb.png"
 import rvbber2 from "../../Assets/Projects/rvb/rvb2.png"
 import rvbber3 from "../../Assets/Projects/rvb/rvb3.png"
@@ -61,7 +65,7 @@ const projectsData = [
   },
   {
     id: "tech-support",
-    imgPath: hotelBookingPic,
+    imgPath: tsls,
     title: "Technical Support Logging System",
     description:
       "A web application that allows users to log technical support requests and track their issue status. System also supports user authentication and role-based access control. Furthermore, facilitates real time communication between users and technician agents.",
@@ -176,22 +180,22 @@ const projectsData = [
 
    {
     id: "dj rvbber services",
-    imgPath: phantom,
-    title: "The Phantom Clothing e-commerce web application",
+    imgPath: rvbHome,
+    title: "Rvbber Graphics Portfolio",
     description:
-      "A React/Redux e-commerce demo specializing in premium t-shirts, featuring WhatsApp order integration. Includes product zoom, color selection, and responsive design. Demonstrates advanced frontend patterns for product browsing and wishlist functionality without backend dependencies.",
+      " .",
     ghLink: "https://github.com/gitLunga/rvbber-services.git",
     demoLink: "https://rvbber-services.netlify.app/",
     images: [rvbber, rvbber2, rvbber3, rvbber4, rvbber5, rvbber6],
     technologies: ["React", "Redux", "WhatsApp API", "CSS3", "Responsive Design"],
-    features: [
-      "Premium t-shirt specialization",
-      "WhatsApp order integration",
-      "Product zoom functionality",
-      "Color selection system",
-      "Wishlist management",
-      "Advanced frontend patterns",
-    ],
+    // features: [
+    //   "Premium t-shirt specialization",
+    //   "WhatsApp order integration",
+    //   "Product zoom functionality",
+    //   "Color selection system",
+    //   "Wishlist management",
+    //   "Advanced frontend patterns",
+    // ],
   },
 ]
 
