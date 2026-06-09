@@ -40,7 +40,7 @@ function CountUp({ target, suffix = "", duration = 1600 }) {
 
 /* ─── Stats data ─────────────────────────────────────────── */
 const stats = [
-  { target: 1,  suffix: "+", label: "Years Experience" },
+  { target: 2,  suffix: "+", label: "Years Experience" },
   { target: 8,  suffix: "+", label: "Projects Built" },
   { target: 2,  suffix: "×", label: "Hackathon Top 5" },
   { target: 30, suffix: "%", label: "SLA Improvement" },
