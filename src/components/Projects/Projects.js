@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container } from "react-bootstrap"
 import ProjectCard from "../Projects/ProjectCards"
 import Particle from "../Particle"
 import { BsGithub } from "react-icons/bs"
 import { CgWebsite } from "react-icons/cg"
 import { MdClose, MdChevronLeft, MdChevronRight, MdCheckCircle } from "react-icons/md"
+import { Reveal, StaggerReveal, RevealItem } from "../ScrollReveal"
 
 import tsls from "../../Assets/Screenshot (162).png"
 import eComPic from "../../Assets/Projects/e -commerce pic.png"
@@ -295,54 +296,50 @@ function Projects() {
     <Container fluid className="project-section">
       <Particle />
       <Container>
-        <div className="fade-in-animation">
+        <Reveal variant="blurUp" delay={0}>
           <h1 className="project-heading">
             My Recent <strong className="purple">Works</strong>
           </h1>
           <p style={{ color: "rgba(255,255,255,0.6)" }}>
             Here are a few projects I've worked on recently.
           </p>
-        </div>
+        </Reveal>
 
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          {projectsData.slice(0, 4).map((project, index) => (
-            <Col md={4} className="project-card" key={project.id}>
-              <div className="project-card-animation" style={{ animationDelay: `${index * 0.12}s` }}>
-                <ProjectCard
-                  imgPath={project.imgPath}
-                  isBlog={false}
-                  title={project.title}
-                  description={project.description}
-                  ghLink={project.ghLink}
-                  demoLink={project.demoLink}
-                  onViewDetails={() => setSelected(project)}
-                />
-              </div>
-            </Col>
+        <StaggerReveal className="row" style={{ justifyContent: "center", paddingBottom: "10px" }} stagger={0.1} delayChildren={0.05}>
+          {projectsData.slice(0, 4).map((project) => (
+            <RevealItem key={project.id} variant="zoomIn" className="col-md-4 project-card">
+              <ProjectCard
+                imgPath={project.imgPath}
+                isBlog={false}
+                title={project.title}
+                description={project.description}
+                ghLink={project.ghLink}
+                demoLink={project.demoLink}
+                onViewDetails={() => setSelected(project)}
+              />
+            </RevealItem>
           ))}
-        </Row>
+        </StaggerReveal>
 
-        <p className="projects-divider-text fade-in-animation">
-          Personal projects
-        </p>
+        <Reveal variant="fadeUp" delay={0}>
+          <p className="projects-divider-text">Personal projects</p>
+        </Reveal>
 
-        <Row style={{ justifyContent: "center" }}>
-          {projectsData.slice(4).map((project, index) => (
-            <Col md={4} className="project-card" key={project.id}>
-              <div className="project-card-animation" style={{ animationDelay: `${(index + 4) * 0.12}s` }}>
-                <ProjectCard
-                  imgPath={project.imgPath}
-                  isBlog={false}
-                  title={project.title}
-                  description={project.description}
-                  ghLink={project.ghLink}
-                  demoLink={project.demoLink}
-                  onViewDetails={() => setSelected(project)}
-                />
-              </div>
-            </Col>
+        <StaggerReveal className="row" style={{ justifyContent: "center" }} stagger={0.1} delayChildren={0.05}>
+          {projectsData.slice(4).map((project) => (
+            <RevealItem key={project.id} variant="zoomIn" className="col-md-4 project-card">
+              <ProjectCard
+                imgPath={project.imgPath}
+                isBlog={false}
+                title={project.title}
+                description={project.description}
+                ghLink={project.ghLink}
+                demoLink={project.demoLink}
+                onViewDetails={() => setSelected(project)}
+              />
+            </RevealItem>
           ))}
-        </Row>
+        </StaggerReveal>
       </Container>
 
       {selected && <ProjectPopup project={selected} onClose={() => setSelected(null)} />}

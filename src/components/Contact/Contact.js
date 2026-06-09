@@ -5,6 +5,7 @@ import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { MdEmail, MdLocationOn } from "react-icons/md";
 import { HiPaperAirplane } from "react-icons/hi";
+import { Reveal } from "../ScrollReveal";
 
 const contactInfo = [
   {
@@ -56,18 +57,21 @@ function Contact() {
       <Container>
         <Row style={{ justifyContent: "center", paddingBottom: "20px" }}>
           <Col md={12} className="contact-heading-wrapper">
-            <h1 className="project-heading">
-              Get In <strong className="purple">Touch</strong>
-            </h1>
-            <p className="contact-subheading">
-              Have a project in mind or want to collaborate? I'd love to hear from you.
-            </p>
+            <Reveal variant="blurUp" delay={0}>
+              <h1 className="project-heading">
+                Get In <strong className="purple">Touch</strong>
+              </h1>
+              <p className="contact-subheading">
+                Have a project in mind or want to collaborate? I'd love to hear from you.
+              </p>
+            </Reveal>
           </Col>
         </Row>
 
         <Row className="contact-main-row">
           {/* Left – Contact Info */}
           <Col md={4} className="contact-info-col">
+            <Reveal variant="fadeLeft" delay={0.1} duration={0.7}>
             <div className="contact-info-card">
               <h3 className="contact-info-title">Let's Connect</h3>
               <p className="contact-info-desc">
@@ -105,10 +109,12 @@ function Contact() {
                 </a>
               </div>
             </div>
+            </Reveal>
           </Col>
 
           {/* Right – Form */}
           <Col md={8} className="contact-form-col">
+            <Reveal variant="fadeRight" delay={0.2} duration={0.7}>
             <div className="contact-form-card">
               <h3 className="contact-form-title">Send a Message</h3>
               <Form onSubmit={handleSubmit} className="contact-form">
@@ -181,6 +187,7 @@ function Contact() {
                 </Button>
               </Form>
             </div>
+            </Reveal>
           </Col>
         </Row>
       </Container>

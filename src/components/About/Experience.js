@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { MdWork, MdCalendarToday, MdLocationOn, MdExpandMore, MdExpandLess } from "react-icons/md";
 import { FaCode, FaBuilding } from "react-icons/fa";
+import { StaggerReveal, RevealItem } from "../ScrollReveal";
 
 const experiences = [
   {
@@ -151,15 +152,15 @@ function Experience() {
   return (
     <Row style={{ justifyContent: "center", paddingBottom: "40px" }}>
       <Col md={10}>
-        <div className="exp-timeline-wrapper">
+        <StaggerReveal className="exp-timeline-wrapper" stagger={0.18} delayChildren={0.05}>
           {experiences.map((exp, i) => (
-            <div key={exp.company} className="exp-timeline-item">
+            <RevealItem key={exp.company} variant="fadeLeft" className="exp-timeline-item">
               <div className="exp-timeline-line" />
               <div className="exp-timeline-dot" style={{ borderColor: exp.badgeColor, background: `${exp.badgeColor}25` }} />
               <ExperienceCard exp={exp} defaultOpen={i === 0} />
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </StaggerReveal>
       </Col>
     </Row>
   );
