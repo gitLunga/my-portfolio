@@ -11,11 +11,15 @@ import {
   AiOutlineMail,
 } from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
+import { BsSun, BsMoon } from "react-icons/bs";
+import { motion } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
   const location = useLocation();
+  const { theme, toggle } = useTheme();
 
   function scrollHandler() {
     if (window.scrollY >= 20) {
@@ -107,6 +111,18 @@ function NavBar() {
               >
                 <AiOutlineMail style={{ marginBottom: "2px" }} /> Contact
               </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item className="d-flex align-items-center">
+              <motion.button
+                className="theme-toggle-btn"
+                onClick={toggle}
+                animate={{ rotate: theme === "light" ? 0 : 180 }}
+                transition={{ type: "spring", stiffness: 200, damping: 18 }}
+                aria-label="Toggle theme"
+              >
+                {theme === "light" ? <BsSun size={16} /> : <BsMoon size={16} />}
+              </motion.button>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>

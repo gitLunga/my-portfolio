@@ -2421,3 +2421,313 @@ body.custom-cursor-active * {
     grid-template-columns: 1fr;
   }
 }
+
+/* ================================ */
+/* BACK TO TOP BUTTON               */
+/* ================================ */
+
+.back-to-top-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9990;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #5f9bf5);
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: btpPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes btpPulse {
+  0%, 100% {
+    box-shadow: 0 4px 18px rgba(124, 58, 237, 0.5), 0 0 0 0 rgba(124, 58, 237, 0.35);
+  }
+  50% {
+    box-shadow: 0 4px 18px rgba(124, 58, 237, 0.38), 0 0 0 10px rgba(124, 58, 237, 0);
+  }
+}
+
+@media (max-width: 767px) {
+  .back-to-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* ================================ */
+/* THEME TOGGLE BUTTON (Navbar)     */
+/* ================================ */
+
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.82);
+  cursor: pointer;
+  transition: background 0.22s, border-color 0.22s, color 0.22s;
+  flex-shrink: 0;
+  outline: none;
+  margin-left: 10px;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(199, 112, 240, 0.16);
+  border-color: rgba(199, 112, 240, 0.45);
+  color: #c770f0;
+}
+
+.theme-toggle-btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ================================ */
+/* LIGHT MODE                       */
+/* ================================ */
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+  background: #f0f4fb;
+  color: #1e293b;
+  --section-background-color: linear-gradient(
+    to bottom left,
+    rgba(228, 238, 255, 0.72),
+    rgba(240, 248, 255, 0.88)
+  );
+  --image-gradient: linear-gradient(
+    to bottom left,
+    rgba(195, 220, 255, 0.58),
+    rgba(210, 232, 255, 0.72)
+  );
+}
+
+/* Scrollbar */
+body.light-mode ::-webkit-scrollbar-track {
+  background: #e2eaf5;
+}
+body.light-mode ::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.38);
+}
+body.light-mode ::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.6);
+}
+
+/* --- Navbar --- */
+body.light-mode .sticky {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
+}
+body.light-mode .navbar {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+}
+@media (max-width: 767px) {
+  body.light-mode .navbar {
+    background-color: rgba(255, 255, 255, 0.97) !important;
+  }
+}
+body.light-mode .navbar-nav .nav-link {
+  color: #2d3748 !important;
+}
+body.light-mode .navbar-brand {
+  color: #1e293b !important;
+}
+body.light-mode .navbar-toggler span {
+  background-color: #2d3748 !important;
+}
+body.light-mode .navbar-brand-text {
+  background: linear-gradient(135deg, #7c3aed, #2563eb) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+body.light-mode .theme-toggle-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #475569;
+}
+body.light-mode .theme-toggle-btn:hover {
+  background: rgba(124, 58, 237, 0.1);
+  border-color: rgba(124, 58, 237, 0.4);
+  color: #7c3aed;
+}
+
+/* --- Home section --- */
+body.light-mode .home-section {
+  background-image: var(--image-gradient), url(./Assets/home-bg.jpg);
+}
+body.light-mode .home-content {
+  color: #1e293b;
+}
+body.light-mode .heading {
+  color: #1e293b !important;
+}
+body.light-mode .heading-name {
+  color: #1e293b !important;
+}
+body.light-mode .main-name {
+  color: #5f27cd;
+}
+body.light-mode .Typewriter__wrapper {
+  color: #5f27cd !important;
+}
+body.light-mode .Typewriter__cursor {
+  color: #7c3aed !important;
+}
+
+/* --- Home about section --- */
+body.light-mode .home-about-section {
+  background: linear-gradient(to bottom, #eef2ff, #f4f8ff) !important;
+}
+body.light-mode .home-about-description {
+  color: #1e293b !important;
+}
+body.light-mode .home-about-body {
+  color: #475569 !important;
+}
+body.light-mode .home-about-social {
+  color: #1e293b !important;
+}
+
+/* --- Stats cards --- */
+body.light-mode .stats-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(124, 58, 237, 0.18);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.07);
+}
+body.light-mode .stats-card:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 8px 28px rgba(124, 58, 237, 0.14);
+}
+body.light-mode .stats-label {
+  color: #64748b !important;
+}
+
+/* --- About section --- */
+body.light-mode .about-section {
+  color: #1e293b !important;
+}
+body.light-mode .tech-icons {
+  border-color: rgba(124, 58, 237, 0.2) !important;
+  background: rgba(255, 255, 255, 0.88) !important;
+  box-shadow: 3px 4px 10px rgba(124, 58, 237, 0.07) !important;
+  color: #1e293b !important;
+}
+
+/* --- Flip cards --- */
+body.light-mode .flip-card-front {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-color: rgba(124, 58, 237, 0.18) !important;
+  color: #1e293b !important;
+}
+body.light-mode .flip-card-front span {
+  color: #1e293b !important;
+}
+
+/* --- Experience timeline cards --- */
+body.light-mode .experience-timeline-card {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-color: rgba(124, 58, 237, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+}
+body.light-mode .experience-timeline-card:hover {
+  border-color: rgba(124, 58, 237, 0.42) !important;
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.12) !important;
+}
+body.light-mode .exp-subtitle {
+  color: #64748b !important;
+}
+body.light-mode .exp-location-dot {
+  color: #94a3b8 !important;
+}
+body.light-mode .exp-toggle-btn {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #64748b !important;
+}
+body.light-mode .exp-toggle-btn:hover {
+  background: rgba(124, 58, 237, 0.1) !important;
+  border-color: rgba(124, 58, 237, 0.35) !important;
+  color: #7c3aed !important;
+}
+
+/* --- Projects section --- */
+body.light-mode .project-heading {
+  color: #1e293b !important;
+}
+body.light-mode .filter-tab {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #64748b;
+}
+body.light-mode .filter-tab:hover {
+  border-color: rgba(124, 58, 237, 0.35);
+  color: #1e293b;
+}
+body.light-mode .filter-tab-active {
+  color: #1e293b !important;
+  border-color: rgba(124, 58, 237, 0.5) !important;
+}
+body.light-mode .projects-divider-text {
+  color: rgba(0, 0, 0, 0.35);
+}
+body.light-mode .projects-divider-text::before,
+body.light-mode .projects-divider-text::after {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* --- Contact section --- */
+body.light-mode .contact-section {
+  color: #1e293b !important;
+}
+body.light-mode .contact-subheading {
+  color: #64748b !important;
+}
+body.light-mode .contact-info-card {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border-color: rgba(124, 58, 237, 0.15) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07) !important;
+}
+body.light-mode .contact-form-card {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border-color: rgba(124, 58, 237, 0.15) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07) !important;
+}
+body.light-mode .contact-info-title {
+  color: #1e293b !important;
+}
+body.light-mode .contact-info-desc {
+  color: #64748b !important;
+}
+body.light-mode .form-input-custom {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #1e293b !important;
+}
+body.light-mode .form-input-custom::placeholder {
+  color: #94a3b8 !important;
+}
+body.light-mode .form-input-custom:focus {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(124, 58, 237, 0.4) !important;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12) !important;
+}
+
+/* --- Resume section --- */
+body.light-mode .resume-section {
+  color: #1e293b !important;
+}
