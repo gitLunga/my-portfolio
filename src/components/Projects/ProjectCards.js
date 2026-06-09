@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import React from "react"
 import Card from "react-bootstrap/Card"
 import { CgWebsite } from "react-icons/cg"
 import { BsGithub } from "react-icons/bs"
