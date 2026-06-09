@@ -1,181 +1,173 @@
+import React, { useState } from "react"
+import React from "react"
 import Card from "react-bootstrap/Card"
-import Button from "react-bootstrap/Button"
 import { CgWebsite } from "react-icons/cg"
 import { BsGithub } from "react-icons/bs"
-import { motion } from "framer-motion"; // Add this import
-// Either remove this or use it
-import { Eye } from "lucide-react"; // Example import if using Lucide icons
+import { Eye } from "lucide-react"
 
 function ProjectCards(props) {
+  const [hovered, setHovered] = useState(false)
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.3 }}
-      className="project-card h-100"
+    <Card
+      className="project-card-view h-100"
+      style={{
+        backgroundColor: "rgba(20, 20, 45, 0.75)",
+        border: "1px solid rgba(107, 114, 128, 0.3)",
+        borderRadius: "18px",
+        overflow: "hidden",
+        transition: "all 0.35s ease",
+        transform: hovered ? "translateY(-6px)" : "translateY(0)",
+        boxShadow: hovered ? "0 16px 40px rgba(124, 58, 237, 0.25)" : "0 4px 16px rgba(0,0,0,0.3)",
+        borderColor: hovered ? "rgba(199, 112, 240, 0.45)" : "rgba(107, 114, 128, 0.3)",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
-      <Card
-        className="project-card-view h-100"
-        style={{
-          backgroundColor: "rgba(55, 65, 81, 0.5)",
-          border: "1px solid rgba(75, 85, 99, 0.5)",
-          transition: "all 0.3s",
-          overflow: "hidden",
-          maxWidth: "100%",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = "rgba(107, 114, 128, 1)"
-          e.currentTarget.style.transform = "translateY(-3px)"
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = "rgba(75, 85, 99, 0.5)"
-          e.currentTarget.style.transform = "translateY(0)"
-        }}
-      >
-        <div style={{ position: "relative", overflow: "hidden" }}>
-          <Card.Img
-            variant="top"
-            src={props.imgPath}
-            alt="card-img"
+      {/* Image with hover overlay */}
+      <div style={{ position: "relative", overflow: "hidden" }}>
+        <Card.Img
+          variant="top"
+          src={props.imgPath}
+          alt="card-img"
+          style={{
+            height: "160px",
+            objectFit: "cover",
+            transition: "transform 0.4s ease",
+            transform: hovered ? "scale(1.08)" : "scale(1)",
+          }}
+        />
+        {/* View Details overlay */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(0,0,0,0.6)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            opacity: hovered ? 1 : 0,
+            transition: "opacity 0.3s ease",
+          }}
+        >
+          <button
+            onClick={props.onViewDetails}
             style={{
-              height: "140px",
-              objectFit: "cover",
-              transition: "transform 0.3s",
+              background: "rgba(124, 58, 237, 0.8)",
+              border: "1px solid rgba(199, 112, 240, 0.5)",
+              borderRadius: "50px",
+              color: "white",
+              fontSize: "0.8rem",
+              fontWeight: "600",
+              padding: "8px 18px",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+              backdropFilter: "blur(4px)",
+              transition: "transform 0.2s",
+              transform: hovered ? "translateY(0) scale(1)" : "translateY(8px) scale(0.95)",
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.1)"
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)"
-            }}
-          />
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1 }}
+          >
+            <Eye size={14} />
+            View Details
+          </button>
+        </div>
+      </div>
+
+      <Card.Body style={{ display: "flex", flexDirection: "column", padding: "16px" }}>
+        <Card.Title
+          style={{
+            color: hovered ? "#c770f0" : "white",
+            transition: "color 0.3s",
+            fontSize: "0.98rem",
+            fontWeight: "700",
+            lineHeight: "1.25",
+            marginBottom: "8px",
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+          }}
+        >
+          {props.title}
+        </Card.Title>
+
+        <Card.Text
+          style={{
+            color: "rgba(209, 213, 219, 0.75)",
+            fontSize: "0.78rem",
+            lineHeight: "1.5",
+            marginBottom: "14px",
+            flexGrow: 1,
+            display: "-webkit-box",
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+          }}
+        >
+          {props.description}
+        </Card.Text>
+
+        <div style={{ display: "flex", gap: "8px", marginTop: "auto" }}>
+          <a
+            href={props.ghLink}
+            target="_blank"
+            rel="noreferrer"
             style={{
-              position: "absolute",
-              inset: "0",
-              backgroundColor: "rgba(0, 0, 0, 0.6)",
+              flex: 1,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              gap: "5px",
+              padding: "7px 8px",
+              borderRadius: "10px",
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              color: "rgba(255,255,255,0.8)",
+              fontSize: "0.75rem",
+              fontWeight: "600",
+              textDecoration: "none",
+              transition: "all 0.2s",
             }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.12)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.05)"; }}
           >
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={props.onViewDetails}
+            <BsGithub size={13} />
+            {props.isBlog ? "Blog" : "GitHub"}
+          </a>
+
+          {!props.isBlog && props.demoLink && (
+            <a
+              href={props.demoLink}
+              target="_blank"
+              rel="noreferrer"
               style={{
-                backgroundColor: "rgba(255, 255, 255, 0.2)",
-                backdropFilter: "blur(4px)",
+                flex: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "5px",
+                padding: "7px 8px",
+                borderRadius: "10px",
+                background: "linear-gradient(135deg, rgba(124,58,237,0.7), rgba(95,157,248,0.7))",
                 border: "none",
                 color: "white",
                 fontSize: "0.75rem",
-                padding: "4px 8px",
+                fontWeight: "600",
+                textDecoration: "none",
+                transition: "all 0.2s",
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.85"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
             >
-              <Eye size={14} style={{ marginRight: "4px" }} />
-              View Details
-            </Button>
-          </motion.div>
+              <CgWebsite size={13} />
+              Demo
+            </a>
+          )}
         </div>
-
-        <Card.Body style={{ display: "flex", flexDirection: "column", height: "100%", padding: "1rem" }}>
-          <Card.Title
-            style={{
-              color: "white",
-              marginBottom: "0.5rem",
-              transition: "color 0.3s",
-              fontSize: "1rem",
-              fontWeight: "bold",
-              lineHeight: "1.2",
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "#a855f7"
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "white"
-            }}
-          >
-            {props.title}
-          </Card.Title>
-          <Card.Text
-            style={{
-              textAlign: "justify",
-              color: "#d1d5db",
-              fontSize: "0.75rem",
-              lineHeight: "1.4",
-              marginBottom: "1rem",
-              flexGrow: 1,
-              display: "-webkit-box",
-              WebkitLineClamp: 3,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-            }}
-          >
-            {props.description}
-          </Card.Text>
-
-          <div style={{ display: "flex", gap: "8px", marginTop: "auto" }}>
-            <Button
-              variant="outline-light"
-              href={props.ghLink}
-              target="_blank"
-              size="sm"
-              style={{
-                flex: 1,
-                backgroundColor: "transparent",
-                borderColor: "rgba(107, 114, 128, 1)",
-                color: "white",
-                transition: "all 0.3s",
-                fontSize: "0.75rem",
-                padding: "4px 8px",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "rgba(75, 85, 99, 1)"
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "transparent"
-              }}
-            >
-              <BsGithub style={{ marginRight: "4px", fontSize: "0.75rem" }} />
-              {props.isBlog ? "Blog" : "GitHub"}
-            </Button>
-
-            {!props.isBlog && props.demoLink && (
-              <Button
-                variant="primary"
-                href={props.demoLink}
-                target="_blank"
-                size="sm"
-                style={{
-                  flex: 1,
-                  backgroundColor: "#7c3aed",
-                  borderColor: "#7c3aed",
-                  transition: "all 0.3s",
-                  fontSize: "0.75rem",
-                  padding: "4px 8px",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#6d28d9"
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#7c3aed"
-                }}
-              >
-                <CgWebsite style={{ marginRight: "4px", fontSize: "0.75rem" }} />
-                Demo
-              </Button>
-            )}
-          </div>
-        </Card.Body>
-      </Card>
-    </motion.div>
+      </Card.Body>
+    </Card>
   )
 }
 

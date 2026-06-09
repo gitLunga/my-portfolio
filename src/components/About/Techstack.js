@@ -1,152 +1,79 @@
-import React, { useState, useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
+import React from "react";
 import { CgCPlusPlus } from "react-icons/cg";
 import {
-  DiJavascript1,
-  DiReact,
-  DiNodejs,
-  DiGit,
-  DiJava,
-  DiMysql,
-  DiHtml5,
-  DiCss3,
-  DiDocker,
+  DiJavascript1, DiReact, DiNodejs, DiGit,
+  DiJava, DiMysql, DiHtml5, DiCss3, DiDocker,
 } from "react-icons/di";
 import {
-  SiTypescript,
-  SiDotnet,
-  SiMongodb,
-  SiPostgresql,
-  SiTailwindcss,
-  SiFirebase,
-  SiRedux,
+  SiTypescript, SiDotnet, SiMongodb, SiPostgresql,
+  SiTailwindcss, SiFirebase, SiRedux, SiExpress,
 } from "react-icons/si";
 
-const techData = [
-  { icon: DiJava, name: "Java", color: "#f89820" },
-  { icon: CgCPlusPlus, name: "C#", color: "#239120" },
-  { icon: DiJavascript1, name: "JavaScript", color: "#f7df1e" },
-  { icon: SiTypescript, name: "TypeScript", color: "#3178c6" },
-  { icon: DiReact, name: "React", color: "#61dafb" },
-  { icon: DiNodejs, name: "Node.js", color: "#339933" },
-  { icon: SiRedux, name: "Redux", color: "#764abc" },
-  { icon: DiHtml5, name: "HTML5", color: "#e34f26" },
-  { icon: DiCss3, name: "CSS3", color: "#1572b6" },
-  { icon: SiTailwindcss, name: "Tailwind", color: "#38bdf8" },
-  { icon: DiMysql, name: "MySQL", color: "#4479a1" },
-  { icon: SiMongodb, name: "MongoDB", color: "#47a248" },
-  { icon: SiPostgresql, name: "PostgreSQL", color: "#4169e1" },
-  { icon: SiDotnet, name: ".NET", color: "#512bd4" },
-  { icon: SiFirebase, name: "Firebase", color: "#ffca28" },
-  { icon: DiDocker, name: "Docker", color: "#2496ed" },
-  { icon: DiGit, name: "Git", color: "#f05032" },
+const row1 = [
+  { icon: DiJava,        name: "Java",        color: "#f89820", category: "Backend" },
+  { icon: CgCPlusPlus,   name: "C#",          color: "#239120", category: "Backend" },
+  { icon: DiJavascript1, name: "JavaScript",  color: "#f7df1e", category: "Language" },
+  { icon: SiTypescript,  name: "TypeScript",  color: "#3178c6", category: "Language" },
+  { icon: DiReact,       name: "React",       color: "#61dafb", category: "Frontend" },
+  { icon: DiNodejs,      name: "Node.js",     color: "#339933", category: "Backend" },
+  { icon: SiExpress,     name: "Express",     color: "#ffffff", category: "Backend" },
+  { icon: SiRedux,       name: "Redux",       color: "#764abc", category: "State" },
+  { icon: SiDotnet,      name: ".NET",        color: "#512bd4", category: "Backend" },
 ];
 
-function Techstack() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoRotating, setIsAutoRotating] = useState(true);
+const row2 = [
+  { icon: DiHtml5,       name: "HTML5",      color: "#e34f26", category: "Frontend" },
+  { icon: DiCss3,        name: "CSS3",       color: "#1572b6", category: "Frontend" },
+  { icon: SiTailwindcss, name: "Tailwind",   color: "#38bdf8", category: "Frontend" },
+  { icon: DiMysql,       name: "MySQL",      color: "#4479a1", category: "Database" },
+  { icon: SiMongodb,     name: "MongoDB",    color: "#47a248", category: "Database" },
+  { icon: SiPostgresql,  name: "PostgreSQL", color: "#4169e1", category: "Database" },
+  { icon: SiFirebase,    name: "Firebase",   color: "#ffca28", category: "Cloud" },
+  { icon: DiDocker,      name: "Docker",     color: "#2496ed", category: "DevOps" },
+  { icon: DiGit,         name: "Git",        color: "#f05032", category: "DevOps" },
+];
 
-  useEffect(() => {
-    if (!isAutoRotating) return;
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % techData.length);
-    }, 1800);
-    return () => clearInterval(interval);
-  }, [isAutoRotating]);
-
-  const TechIcon = techData[currentIndex].icon;
-
+function TechCard({ icon: Icon, name, color, category }) {
   return (
-    <div style={{ paddingBottom: "50px" }}>
-      {/* Featured rotating tech */}
-      <div className="featured-tech-wrapper">
-        <h3 className="featured-tech-title">Featured Technology</h3>
-        <div
-          className="featured-tech-orb"
-          onMouseEnter={() => setIsAutoRotating(false)}
-          onMouseLeave={() => setIsAutoRotating(true)}
-        >
-          <div className="featured-tech-inner tech-feature-animation">
-            <TechIcon
-              style={{
-                fontSize: "4rem",
-                color: techData[currentIndex].color,
-                transition: "color 0.4s",
-                filter: `drop-shadow(0 0 12px ${techData[currentIndex].color}80)`,
-              }}
-            />
-            <p className="featured-tech-name">{techData[currentIndex].name}</p>
-          </div>
-          <div
-            className="orb-ring"
-            style={{ borderColor: `${techData[currentIndex].color}40` }}
-          />
+    <div className="flip-card">
+      <div className="flip-card-inner">
+        {/* Front */}
+        <div className="flip-card-front" style={{ "--tc": color }}>
+          <div className="flip-icon-glow" style={{ background: `radial-gradient(circle, ${color}25, transparent 70%)` }} />
+          <Icon className="flip-icon" style={{ color, filter: `drop-shadow(0 0 10px ${color}70)` }} />
+          <span className="flip-name">{name}</span>
         </div>
-
-        {/* Progress dots */}
-        <div className="tech-progress-dots">
-          {techData.map((_, i) => (
-            <button
-              key={i}
-              className={`tech-dot${i === currentIndex ? " tech-dot-active" : ""}`}
-              onClick={() => { setCurrentIndex(i); setIsAutoRotating(false); }}
-              style={i === currentIndex ? { backgroundColor: techData[i].color } : {}}
-              aria-label={techData[i].name}
-            />
-          ))}
+        {/* Back */}
+        <div className="flip-card-back" style={{ "--tc": color }}>
+          <div className="flip-back-icon-sm">
+            <Icon style={{ color, fontSize: "1.6rem" }} />
+          </div>
+          <span className="flip-back-name">{name}</span>
+          <span className="flip-back-category" style={{ color }}>{category}</span>
         </div>
       </div>
+    </div>
+  );
+}
 
-      {/* Tech Grid */}
-      <Row style={{ justifyContent: "center" }}>
-        {techData.map((tech) => {
-          const Icon = tech.icon;
-          return (
-            <Col xs={4} md={2} className="tech-icons" key={tech.name}>
-              <div
-                className="tech-icon-hover"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "1rem",
-                  borderRadius: "0.75rem",
-                  backgroundColor: "rgba(30, 30, 50, 0.6)",
-                  backdropFilter: "blur(6px)",
-                  border: "1px solid rgba(107, 114, 128, 0.4)",
-                  transition: "all 0.3s ease",
-                  cursor: "pointer",
-                  height: "100%",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgba(55, 65, 81, 0.9)";
-                  e.currentTarget.style.borderColor = tech.color;
-                  e.currentTarget.style.boxShadow = `0 8px 30px -8px ${tech.color}60`;
-                  e.currentTarget.style.transform = "translateY(-6px) scale(1.05)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgba(30, 30, 50, 0.6)";
-                  e.currentTarget.style.borderColor = "rgba(107, 114, 128, 0.4)";
-                  e.currentTarget.style.boxShadow = "none";
-                  e.currentTarget.style.transform = "translateY(0) scale(1)";
-                }}
-              >
-                <Icon
-                  style={{
-                    fontSize: "3rem",
-                    marginBottom: "0.5rem",
-                    color: tech.color,
-                    filter: `drop-shadow(0 0 6px ${tech.color}50)`,
-                  }}
-                />
-                <p style={{ color: "white", fontSize: "0.8rem", fontWeight: "500", margin: 0 }}>
-                  {tech.name}
-                </p>
-              </div>
-            </Col>
-          );
-        })}
-      </Row>
+function ScrollRow({ items, reverse = false }) {
+  const doubled = [...items, ...items];
+  return (
+    <div className={`scroll-track-wrapper${reverse ? " scroll-reverse" : ""}`}>
+      <div className="scroll-track">
+        {doubled.map((tech, i) => (
+          <TechCard key={`${tech.name}-${i}`} {...tech} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Techstack() {
+  return (
+    <div className="techstack-scroller-wrapper">
+      <ScrollRow items={row1} reverse={false} />
+      <ScrollRow items={row2} reverse={true} />
     </div>
   );
 }
