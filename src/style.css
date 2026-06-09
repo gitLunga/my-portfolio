@@ -1216,6 +1216,149 @@ button:focus {
 }
 
 /* ========================= */
+/* EXPERIENCE TIMELINE V2    */
+/* ========================= */
+
+.exp-timeline-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.exp-timeline-item {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 20px;
+}
+
+.exp-timeline-line {
+  position: absolute;
+  left: 7px;
+  top: 24px;
+  bottom: -20px;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(199,112,240,0.4), rgba(95,157,248,0.15));
+}
+
+.exp-timeline-item:last-child .exp-timeline-line {
+  display: none;
+}
+
+.exp-timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid;
+  z-index: 1;
+}
+
+/* Collapsible card overrides */
+.experience-timeline-card {
+  cursor: default;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.exp-card-open {
+  border-color: rgba(199,112,240,0.35) !important;
+  box-shadow: 0 8px 30px rgba(199,112,240,0.1);
+}
+
+.exp-header {
+  user-select: none;
+  align-items: center;
+}
+
+.exp-subtitle {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.88rem;
+  font-weight: 400;
+}
+
+.exp-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.exp-location-dot {
+  color: rgba(255,255,255,0.3);
+  font-size: 0.8rem;
+}
+
+.exp-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.exp-toggle-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.exp-toggle-btn:hover {
+  background: rgba(199,112,240,0.15);
+  border-color: rgba(199,112,240,0.35);
+  color: #c770f0;
+}
+
+.exp-project-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  background: rgba(80,250,123,0.06);
+  border: 1px solid rgba(80,250,123,0.2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.83rem;
+  line-height: 1.5;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.exp-team-note {
+  color: rgba(255,255,255,0.45);
+  margin-left: 8px;
+  font-style: italic;
+}
+
+.exp-tech-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.exp-tech-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 50px;
+  border: 1px solid;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+/* ========================= */
 /* ACHIEVEMENT CARDS         */
 /* ========================= */
 
