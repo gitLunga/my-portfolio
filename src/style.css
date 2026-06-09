@@ -2284,3 +2284,140 @@ button:focus {
   vertical-align: middle;
   margin: 0 12px;
 }
+
+/* ================================ */
+/* CUSTOM CURSOR                    */
+/* ================================ */
+
+body.custom-cursor-active,
+body.custom-cursor-active * {
+  cursor: none !important;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c770f0;
+  pointer-events: none;
+  z-index: 999999;
+  margin-top: -4px;
+  margin-left: -4px;
+  box-shadow: 0 0 8px #c770f0, 0 0 16px #c770f080;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(199, 112, 240, 0.55);
+  pointer-events: none;
+  z-index: 999998;
+  margin-top: -17px;
+  margin-left: -17px;
+  background: rgba(199, 112, 240, 0.03);
+}
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999997;
+  margin-top: -45px;
+  margin-left: -45px;
+  background: radial-gradient(circle, rgba(199,112,240,0.35) 0%, transparent 70%);
+  filter: blur(6px);
+}
+
+/* ================================ */
+/* PROJECT FILTER TABS              */
+/* ================================ */
+
+.filter-tabs-wrapper {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 24px 0 36px;
+}
+
+.filter-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.55);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+
+.filter-tab:hover {
+  border-color: rgba(199,112,240,0.4);
+  color: rgba(255,255,255,0.85);
+}
+
+.filter-tab-active {
+  color: white !important;
+  border-color: rgba(199,112,240,0.6) !important;
+}
+
+.filter-pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.35), rgba(95,157,248,0.25));
+  z-index: 0;
+}
+
+.filter-tab-label {
+  position: relative;
+  z-index: 1;
+}
+
+.filter-tab-count {
+  position: relative;
+  z-index: 1;
+  background: rgba(199,112,240,0.18);
+  border: 1px solid rgba(199,112,240,0.3);
+  color: #c770f0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 50px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* ================================ */
+/* PROJECT GRID (replaces Row/Col)  */
+/* ================================ */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+  padding-bottom: 40px;
+}
+
+@media (max-width: 767px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}

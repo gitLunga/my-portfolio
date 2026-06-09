@@ -5,7 +5,8 @@ import Particle from "../Particle"
 import { BsGithub } from "react-icons/bs"
 import { CgWebsite } from "react-icons/cg"
 import { MdClose, MdChevronLeft, MdChevronRight, MdCheckCircle } from "react-icons/md"
-import { Reveal, StaggerReveal, RevealItem } from "../ScrollReveal"
+import { Reveal } from "../ScrollReveal"
+import { motion, AnimatePresence } from "framer-motion"
 
 import tsls from "../../Assets/Screenshot (162).png"
 import eComPic from "../../Assets/Projects/e -commerce pic.png"
@@ -52,6 +53,7 @@ const techColors = {
 const projectsData = [
   {
     id: "tshwane-find",
+    category: "Full-Stack",
     imgPath: TshwaneFindPic,
     title: "Tshwane Find",
     description:
@@ -63,6 +65,7 @@ const projectsData = [
   },
   {
     id: "tech-support",
+    category: "Full-Stack",
     imgPath: tsls,
     title: "Technical Support Logging System",
     description:
@@ -74,6 +77,7 @@ const projectsData = [
   },
   {
     id: "ecommerce-app",
+    category: "E-Commerce",
     imgPath: eComPic,
     title: "Lunga Basic E-Commerce App",
     description:
@@ -85,6 +89,7 @@ const projectsData = [
   },
   {
     id: "hotel-booking",
+    category: "Full-Stack",
     imgPath: hotelBookingPic,
     title: "Hotel Booking System",
     description:
@@ -96,6 +101,7 @@ const projectsData = [
   },
   {
     id: "nino-services",
+    category: "E-Commerce",
     imgPath: ninoServices,
     title: "Nino Services E-Commerce",
     description:
@@ -108,6 +114,7 @@ const projectsData = [
   },
   {
     id: "dj-mega",
+    category: "Frontend",
     imgPath: djmega,
     title: "DJ Mega Portfolio",
     description:
@@ -120,6 +127,7 @@ const projectsData = [
   },
   {
     id: "phantom-clothing",
+    category: "E-Commerce",
     imgPath: phantom,
     title: "The Phantom Clothing",
     description:
@@ -132,6 +140,7 @@ const projectsData = [
   },
   {
     id: "rvbber-services",
+    category: "Frontend",
     imgPath: rvbHome,
     title: "Rvbber Graphics Portfolio",
     description:
@@ -288,9 +297,17 @@ function ProjectPopup({ project, onClose }) {
   );
 }
 
+/* ─── Filter tabs data ───────────────────────────────────────── */
+const FILTERS = ["All", "Full-Stack", "E-Commerce", "Frontend"];
+
 /* ─── Projects Page ──────────────────────────────────────────── */
 function Projects() {
   const [selected, setSelected] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filtered = activeFilter === "All"
+    ? projectsData
+    : projectsData.filter((p) => p.category === activeFilter);
 
   return (
     <Container fluid className="project-section">
@@ -305,41 +322,63 @@ function Projects() {
           </p>
         </Reveal>
 
-        <StaggerReveal className="row" style={{ justifyContent: "center", paddingBottom: "10px" }} stagger={0.1} delayChildren={0.05}>
-          {projectsData.slice(0, 4).map((project) => (
-            <RevealItem key={project.id} variant="zoomIn" className="col-md-4 project-card">
-              <ProjectCard
-                imgPath={project.imgPath}
-                isBlog={false}
-                title={project.title}
-                description={project.description}
-                ghLink={project.ghLink}
-                demoLink={project.demoLink}
-                onViewDetails={() => setSelected(project)}
-              />
-            </RevealItem>
-          ))}
-        </StaggerReveal>
-
-        <Reveal variant="fadeUp" delay={0}>
-          <p className="projects-divider-text">Personal projects</p>
+        {/* Filter tabs */}
+        <Reveal variant="fadeUp" delay={0.1}>
+          <div className="filter-tabs-wrapper">
+            {FILTERS.map((f) => (
+              <button
+                key={f}
+                className={`filter-tab${activeFilter === f ? " filter-tab-active" : ""}`}
+                onClick={() => setActiveFilter(f)}
+              >
+                {activeFilter === f && (
+                  <motion.span
+                    layoutId="filter-pill"
+                    className="filter-pill"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
+                <span className="filter-tab-label">{f}</span>
+                <span className="filter-tab-count">
+                  {f === "All" ? projectsData.length : projectsData.filter(p => p.category === f).length}
+                </span>
+              </button>
+            ))}
+          </div>
         </Reveal>
 
-        <StaggerReveal className="row" style={{ justifyContent: "center" }} stagger={0.1} delayChildren={0.05}>
-          {projectsData.slice(4).map((project) => (
-            <RevealItem key={project.id} variant="zoomIn" className="col-md-4 project-card">
-              <ProjectCard
-                imgPath={project.imgPath}
-                isBlog={false}
-                title={project.title}
-                description={project.description}
-                ghLink={project.ghLink}
-                demoLink={project.demoLink}
-                onViewDetails={() => setSelected(project)}
-              />
-            </RevealItem>
-          ))}
-        </StaggerReveal>
+        {/* Animated project grid */}
+        <motion.div layout className="projects-grid">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.85, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: -10 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className="project-card"
+              >
+                <ProjectCard
+                  imgPath={project.imgPath}
+                  isBlog={false}
+                  title={project.title}
+                  description={project.description}
+                  ghLink={project.ghLink}
+                  demoLink={project.demoLink}
+                  onViewDetails={() => setSelected(project)}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {filtered.length === 0 && (
+          <p style={{ color: "rgba(255,255,255,0.4)", textAlign: "center", padding: "40px 0" }}>
+            No projects in this category yet.
+          </p>
+        )}
       </Container>
 
       {selected && <ProjectPopup project={selected} onClose={() => setSelected(null)} />}
