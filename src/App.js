@@ -36,6 +36,13 @@ const Projects = lazy(() => import("./components/Projects/Projects"));
 const Resume = lazy(() => import("./components/Resume/ResumeNew"));
 const Contact = lazy(() => import("./components/Contact/Contact"));
 
+// Studio (Lungas Web Lab) is a fully separate namespace from the personal
+// portfolio above — own layout, own data, own brand tokens — split into its
+// own chunk so a visitor who only cares about the engineering portfolio
+// never downloads it.
+const StudioLayout = lazy(() => import("./studio/layout/StudioLayout"));
+const StudioHome = lazy(() => import("./studio/pages/StudioHome"));
+
 function RouteFallback() {
   return <div className="route-loading" aria-busy="true" aria-live="polite" />;
 }
@@ -81,6 +88,13 @@ function App() {
                   <Route path="/about" element={<About />} />
                   <Route path="/resume" element={<Resume />} />
                   <Route path="/contact" element={<Contact />} />
+
+                  {/* Lungas Web Lab — the freelance/business side, kept
+                      structurally separate from the routes above. */}
+                  <Route path="/studio" element={<StudioLayout />}>
+                    <Route index element={<StudioHome />} />
+                  </Route>
+
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
               </Suspense>

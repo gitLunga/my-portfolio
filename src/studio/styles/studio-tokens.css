@@ -1,0 +1,38 @@
+/* ============================================================
+   STUDIO BRAND LAYER — Lungas Web Lab
+   ============================================================
+   The personal portfolio and the freelance studio are one
+   codebase but two identities. Rather than a parallel set of
+   surface/text tokens (which would mean maintaining light AND
+   dark mode twice), this layer redefines only the ACCENT
+   tokens — [data-theme] still controls every base surface and
+   text color exactly as it does on the portfolio side, so
+   toggling dark/light on a studio page works identically to
+   everywhere else. What changes is the brand color running
+   through buttons, links and highlights: violet/blue on the
+   portfolio, the flyer's orange/violet on the studio.
+
+   Applied via [data-brand="studio"] on <html>, set by
+   StudioLayout for the lifetime of any /studio/* route and
+   removed on unmount — see src/studio/layout/StudioLayout.js.
+   ============================================================ */
+
+[data-brand="studio"] {
+  --accent: #f25c05;
+  --accent-strong: #c94a00;
+  --accent-alt: #5b21b6;
+  --accent-gradient: linear-gradient(135deg, #f25c05, #5b21b6);
+  --accent-tint: rgb(242 92 5 / 0.14);
+  --accent-tint-strong: rgb(242 92 5 / 0.26);
+  --border-accent: rgb(242 92 5 / 0.45);
+}
+
+[data-brand="studio"][data-theme="light"] {
+  --accent: #d94e00;
+  --accent-strong: #b34000;
+  --accent-alt: #5b21b6;
+  --accent-gradient: linear-gradient(135deg, #d94e00, #5b21b6);
+  --accent-tint: rgb(217 78 0 / 0.1);
+  --accent-tint-strong: rgb(217 78 0 / 0.2);
+  --border-accent: rgb(217 78 0 / 0.4);
+}

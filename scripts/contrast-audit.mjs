@@ -16,14 +16,19 @@
  * failures as "look at this," not as certified violations, and confirm
  * visually before treating them as real.
  *
- * Known false positive: .home-badge ("Available for Work" pill) reports
- * ~3:1 here. Its border-radius (50px) is large relative to its own height
- * (~30px), so the fixed inset that correctly samples ordinary text lands in
- * the pill's rounded-away corner instead of its fill. A dead-center sample
- * (see git history / Phase 3 notes) reads 4.83:1 - it passes. A size-aware
- * inset was tried to fix this generally and made everything else worse
- * (landed on glyph ink for short text, on icons/thumbnails for compact
- * cards) - reverted in favor of documenting this one known gap.
+ * Known false positives, same root cause each time: a pill with
+ * border-radius large relative to its own height, where the fixed sample
+ * inset lands in the rounded-away corner instead of the fill. A dead-center
+ * sample confirms all of these pass:
+ *   - .home-badge ("Available for Work"): reports ~3:1, center-samples at
+ *     4.83:1 (Phase 3).
+ *   - .studio-subnav-cta ("WhatsApp"): reports 1:1 (literal fg-on-fg from
+ *     sampling the corner), center-samples as a clean white-on-gradient
+ *     button on visual inspection (Phase 4).
+ * A size-aware inset was tried to fix this generally and made everything
+ * else worse (landed on glyph ink for short text, on icons/thumbnails for
+ * compact cards) - reverted in favor of documenting each known gap as it's
+ * found.
  *
  * Usage: node scripts/contrast-audit.mjs [baseUrl]
  */

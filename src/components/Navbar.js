@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -11,6 +11,7 @@ import {
   AiOutlineMail,
 } from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
+import { MdOutlineStorefront } from "react-icons/md";
 import { BsSun, BsMoon } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
@@ -21,15 +22,14 @@ function NavBar() {
   const location = useLocation();
   const { theme, toggle } = useTheme();
 
-  function scrollHandler() {
-    if (window.scrollY >= 20) {
-      updateNavbar(true);
-    } else {
-      updateNavbar(false);
-    }
-  }
-
-  window.addEventListener("scroll", scrollHandler);
+  useEffect(() => {
+    // Was called directly in the render body, which attached a NEW listener
+    // on every render and never removed one — a growing pile of duplicate
+    // scroll handlers for the lifetime of the page.
+    const scrollHandler = () => updateNavbar(window.scrollY >= 20);
+    window.addEventListener("scroll", scrollHandler);
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
 
   const isActive = (path) => location.pathname === path;
 
@@ -99,6 +99,21 @@ function NavBar() {
                 className={isActive("/resume") ? "nav-link-active" : ""}
               >
                 <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
+              </Nav.Link>
+            </Nav.Item>
+
+            {/* Entry point into the separate Lungas Web Lab namespace — given
+                its own accent color here on purpose, so it reads as "a
+                different offering" even before the studio's own brand
+                layer (data-brand="studio") takes over past this link. */}
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/studio"
+                onClick={() => updateExpanded(false)}
+                className={"nav-studio-btn" + (location.pathname.startsWith("/studio") ? " nav-link-active" : "")}
+              >
+                <MdOutlineStorefront style={{ marginBottom: "2px" }} /> Studio
               </Nav.Link>
             </Nav.Item>
 
