@@ -75,9 +75,10 @@ function Home() {
                 <div className="hero-img-wrapper">
                   <img
                     src={homeLogo}
-                    alt="home pic"
+                    alt="Illustration of a laptop with code, C#, JS and React badges"
                     className="img-fluid hero-logo-img"
-                    style={{ maxHeight: "450px" }}
+                    width="420"
+                    height="401"
                   />
                   <div className="hero-img-glow" />
                 </div>

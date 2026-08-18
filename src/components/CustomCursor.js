@@ -26,6 +26,9 @@ export default function CustomCursor() {
   useEffect(() => {
     // only activate on pointer-fine (mouse) devices
     if (!window.matchMedia("(pointer: fine)").matches) return;
+    // never replace the system cursor for anyone who has asked for less
+    // motion — the ring and glow are purely decorative movement
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const move = (e) => {
       mx.set(e.clientX);

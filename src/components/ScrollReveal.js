@@ -1,5 +1,14 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+
+/*
+ * Every wrapper here starts its children at `opacity: 0` and relies on an
+ * animation to reveal them. That means anyone who has asked their OS to
+ * reduce motion — and anything that doesn't run rAF-driven animation — sees a
+ * blank page. Each component below short-circuits to plain, already-visible
+ * markup when reduced motion is requested, so content is never gated on an
+ * animation completing.
+ */
 
 /* ─── Variants ────────────────────────────────────────────── */
 export const variants = {
@@ -45,7 +54,13 @@ export function Reveal({
   style = {},
   as = "div",
 }) {
+  const reduce = useReducedMotion();
   const Tag = motion[as] || motion.div;
+
+  if (reduce) {
+    return <Tag className={className} style={style}>{children}</Tag>;
+  }
+
   return (
     <Tag
       variants={variants[variant]}
@@ -69,6 +84,12 @@ export function StaggerReveal({
   className = "",
   style = {},
 }) {
+  const reduce = useReducedMotion();
+
+  if (reduce) {
+    return <div className={className} style={style}>{children}</div>;
+  }
+
   return (
     <motion.div
       initial="hidden"
@@ -96,6 +117,12 @@ export function RevealItem({
   className = "",
   style = {},
 }) {
+  const reduce = useReducedMotion();
+
+  if (reduce) {
+    return <div className={className} style={style}>{children}</div>;
+  }
+
   return (
     <motion.div
       variants={variants[variant]}
@@ -117,6 +144,12 @@ export function HeroReveal({
   className = "",
   style = {},
 }) {
+  const reduce = useReducedMotion();
+
+  if (reduce) {
+    return <div className={className} style={style}>{children}</div>;
+  }
+
   return (
     <motion.div
       variants={variants[variant]}
