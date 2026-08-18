@@ -1,137 +1,71 @@
-"use client"
+import React, { useState, useEffect } from "react";
+import { Col, Row } from "react-bootstrap";
+import { SiVisualstudiocode, SiPostman, SiSlack, SiMysql, SiSwagger, SiAndroidstudio } from "react-icons/si";
 
-import React, { useState, useEffect } from "react"
-import { Col, Row } from "react-bootstrap"
-import { SiVisualstudiocode, SiPostman, SiSlack, SiMysql, SiSwagger, SiAndroidstudio } from "react-icons/si"
+// Hoisted: this list never changes, so rebuilding it every render only served
+// to make the rotation effect's dependencies look unstable.
+const TOOLS = [
+  { icon: SiMysql, name: "MySQL", color: "#4479a1" },
+  { icon: SiVisualstudiocode, name: "VS Code", color: "#007acc" },
+  { icon: SiPostman, name: "Postman", color: "#ff6c37" },
+  { icon: SiSlack, name: "Slack", color: "#8e5b90" },
+  { icon: SiSwagger, name: "Swagger", color: "#85ea2d" },
+  { icon: SiAndroidstudio, name: "Android Studio", color: "#3ddc84" },
+];
 
-// No framer-motion import to avoid errors
-// We'll use CSS animations and React state instead
+const ROTATE_MS = 2500;
 
 function Toolstack() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAutoRotating, setIsAutoRotating] = useState(true)
-
-  const toolsData = [
-    { icon: SiMysql, name: "MySQL", color: "#4479a1" },
-    { icon: SiVisualstudiocode, name: "VS Code", color: "#007acc" },
-    { icon: SiPostman, name: "Postman", color: "#ff6c37" },
-    { icon: SiSlack, name: "Slack", color: "#4a154b" },
-    { icon: SiSwagger, name: "Swagger", color: "#85ea2d" },
-    { icon: SiAndroidstudio, name: "Android Studio", color: "#3ddc84" },
-  ]
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoRotating, setIsAutoRotating] = useState(true);
 
   useEffect(() => {
-    if (!isAutoRotating) return
-
+    if (!isAutoRotating) return;
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % toolsData.length)
-    }, 2500)
+      setCurrentIndex((prev) => (prev + 1) % TOOLS.length);
+    }, ROTATE_MS);
+    return () => clearInterval(interval);
+  }, [isAutoRotating]);
 
-    return () => clearInterval(interval)
-  }, [isAutoRotating, toolsData.length])
+  const featured = TOOLS[currentIndex];
 
   return (
-    <div style={{ paddingBottom: "50px" }}>
-      {/* Featured Tool - Auto Rotating */}
-      <div style={{ marginBottom: "60px", textAlign: "center" }}>
-        <h3 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "2rem", color: "white" }}>Featured Tool</h3>
+    <div className="toolstack">
+      {/* Featured tool — rotates until hovered */}
+      <div className="toolstack-featured">
+        <h3 className="toolstack-featured-title">Featured Tool</h3>
         <div
-          style={{
-            position: "relative",
-            margin: "0 auto",
-            width: "128px",
-            height: "128px",
-            cursor: "pointer",
-          }}
+          className="toolstack-featured-stage"
           onMouseEnter={() => setIsAutoRotating(false)}
           onMouseLeave={() => setIsAutoRotating(true)}
         >
-          <div
-            className="tool-feature-animation"
-            style={{
-              position: "absolute",
-              inset: "0",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <div className="tool-feature-animation toolstack-featured-inner">
             <div
-              style={{
-                fontSize: "4rem",
-                marginBottom: "0.5rem",
-                color: toolsData[currentIndex].color,
-                transition: "color 0.3s",
-              }}
+              className="toolstack-featured-icon"
+              style={{ color: featured.color }}
             >
-              {React.createElement(toolsData[currentIndex].icon)}
+              {React.createElement(featured.icon)}
             </div>
-            <p style={{ color: "white", fontWeight: "500", margin: 0 }}>{toolsData[currentIndex].name}</p>
+            <p className="toolstack-featured-name">{featured.name}</p>
           </div>
         </div>
       </div>
 
-      {/* Tools Grid */}
+      {/* Tools grid */}
       <Row style={{ justifyContent: "center" }}>
-        {toolsData.map((tool, index) => (
+        {TOOLS.map((tool) => (
           <Col xs={4} md={2} className="tech-icons" key={tool.name}>
-            <div
-              className="tool-icon-hover"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                padding: "1rem",
-                borderRadius: "0.5rem",
-                backgroundColor: "rgba(55, 65, 81, 0.5)",
-                backdropFilter: "blur(4px)",
-                border: "1px solid rgba(75, 85, 99, 0.5)",
-                transition: "all 0.3s",
-                cursor: "pointer",
-                height: "100%",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "rgba(55, 65, 81, 0.8)"
-                e.currentTarget.style.borderColor = "rgba(107, 114, 128, 1)"
-                e.currentTarget.style.boxShadow = `0 15px 35px -10px ${tool.color}40`
-                e.currentTarget.style.transform = "scale(1.1) rotate(10deg)"
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "rgba(55, 65, 81, 0.5)"
-                e.currentTarget.style.borderColor = "rgba(75, 85, 99, 0.5)"
-                e.currentTarget.style.boxShadow = "none"
-                e.currentTarget.style.transform = "scale(1) rotate(0)"
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "3rem",
-                  marginBottom: "0.5rem",
-                  color: tool.color,
-                  transition: "all 0.3s",
-                }}
-                className="tool-icon"
-              >
-                {React.createElement(tool.icon)}
-              </div>
-              <p
-                style={{
-                  color: "white",
-                  fontSize: "0.875rem",
-                  fontWeight: "500",
-                  margin: 0,
-                  transition: "color 0.3s",
-                }}
-              >
-                {tool.name}
-              </p>
+            {/* The brand colour is passed as a custom property so the hover
+                glow can be expressed in CSS rather than four JS handlers. */}
+            <div className="tool-card" style={{ "--tool-color": tool.color }}>
+              <div className="tool-card-icon">{React.createElement(tool.icon)}</div>
+              <p className="tool-card-name">{tool.name}</p>
             </div>
           </Col>
         ))}
       </Row>
     </div>
-  )
+  );
 }
 
-export default Toolstack
+export default Toolstack;

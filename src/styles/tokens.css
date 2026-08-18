@@ -1,0 +1,195 @@
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================
+   Single source of truth for colour, spacing, radius and
+   elevation. Themes work by redefining semantic tokens only —
+   no component rule should ever be duplicated per theme.
+
+   Two layers:
+     1. Primitives  — raw palette values, theme-independent.
+     2. Semantic    — role-based names components actually use.
+
+   Rule of thumb: components reference semantic tokens. If you
+   find yourself writing a hex value inside a component rule,
+   the token layer is missing something.
+   ============================================================ */
+
+:root {
+  /* ── 1. Primitives ─────────────────────────────────────── */
+  --violet-200: #d8a5f5;
+  --violet-300: #c770f0;
+  --violet-500: #7c3aed;
+  --violet-600: #5f27cd;
+
+  --blue-300: #70a8f0;
+  --blue-400: #5f9bf5;
+  --blue-600: #2563eb;
+
+  --slate-50: #f8fafc;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+
+  --ink-900: #0d0a18;
+  --ink-800: #140f23;
+  --ink-700: #1b1429;
+  --ink-600: #14142d;
+
+  --green-400: #50fa7b;
+  --amber-400: #ffd700;
+  --red-500: #ef4444;
+
+  /* ── 2. Semantic — dark theme is the default ───────────── */
+
+  /* Surfaces */
+  --bg-base: var(--ink-800);
+  --bg-page-gradient: linear-gradient(to left, var(--ink-700), #140f23);
+  --bg-elevated: rgb(20 20 45 / 0.75);
+  --bg-inset: rgb(255 255 255 / 0.04);
+  --bg-inset-hover: rgb(255 255 255 / 0.09);
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: rgb(255 255 255 / 0.78);
+  --text-muted: rgb(255 255 255 / 0.58);
+  --text-faint: rgb(255 255 255 / 0.4);
+  --text-on-accent: #ffffff;
+
+  /* Accent */
+  --accent: var(--violet-300);
+  --accent-strong: var(--violet-500);
+  --accent-alt: var(--blue-400);
+  --accent-gradient: linear-gradient(135deg, var(--violet-500), var(--blue-400));
+  --accent-tint: rgb(199 112 240 / 0.14);
+  --accent-tint-strong: rgb(199 112 240 / 0.26);
+
+  /* Borders */
+  --border-subtle: rgb(255 255 255 / 0.12);
+  --border-strong: rgb(255 255 255 / 0.22);
+  --border-accent: rgb(199 112 240 / 0.45);
+
+  /* Cards */
+  --card-bg: rgb(20 20 45 / 0.75);
+  --card-border: rgb(107 114 128 / 0.3);
+  --card-shadow: 0 4px 16px rgb(0 0 0 / 0.3);
+  --card-shadow-hover: 0 16px 40px rgb(124 58 237 / 0.25);
+
+  /* Form controls */
+  --field-bg: rgb(255 255 255 / 0.05);
+  --field-border: rgb(255 255 255 / 0.14);
+  --field-placeholder: rgb(255 255 255 / 0.35);
+  --field-focus-ring: rgb(199 112 240 / 0.25);
+
+  /* Status */
+  --status-success: var(--green-400);
+  --status-warning: var(--amber-400);
+  --status-danger: var(--red-500);
+
+  /* Fades used by the marquee rows — must match the section behind them */
+  --fade-edge: var(--ink-800);
+
+  /* Modal surface */
+  --popup-bg: linear-gradient(145deg, rgb(15 15 35 / 0.98), rgb(20 10 40 / 0.98));
+
+  /* ── Spacing (8pt grid) ────────────────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* ── Radius ────────────────────────────────────────────── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 50px;
+
+  /* ── Motion ────────────────────────────────────────────── */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.18s;
+  --dur-base: 0.28s;
+  --dur-slow: 0.45s;
+
+  /* Legacy aliases — retained so older rules keep resolving
+     while the stylesheet is migrated onto the tokens above. */
+  --imp-text-color: var(--blue-300);
+  --section-background-color: linear-gradient(
+    to bottom left,
+    rgb(17 16 16 / 0.582),
+    rgb(8 18 24 / 0.904)
+  );
+  --image-gradient: linear-gradient(
+    to bottom left,
+    rgb(17 16 16 / 0.678),
+    rgb(10 15 22 / 0.863)
+  );
+}
+
+/* ============================================================
+   LIGHT THEME
+   Redefines semantic tokens only. Every component that reads
+   from the token layer follows automatically — which is the
+   point: the previous approach re-declared each component in a
+   250-line override block and missed most of them, leaving
+   white text on white cards.
+   ============================================================ */
+
+[data-theme="light"] {
+  --bg-base: #f0f4fb;
+  --bg-page-gradient: linear-gradient(to bottom, #eef2ff, #f4f8ff);
+  --bg-elevated: rgb(255 255 255 / 0.94);
+  --bg-inset: rgb(15 23 42 / 0.04);
+  --bg-inset-hover: rgb(15 23 42 / 0.08);
+
+  --text-primary: var(--slate-800);
+  --text-secondary: var(--slate-600);
+  --text-muted: var(--slate-500);
+  --text-faint: var(--slate-400);
+  --text-on-accent: #ffffff;
+
+  --accent: var(--violet-500);
+  --accent-strong: var(--violet-600);
+  --accent-alt: var(--blue-600);
+  --accent-gradient: linear-gradient(135deg, var(--violet-500), var(--blue-600));
+  --accent-tint: rgb(124 58 237 / 0.1);
+  --accent-tint-strong: rgb(124 58 237 / 0.2);
+
+  --border-subtle: rgb(15 23 42 / 0.1);
+  --border-strong: rgb(15 23 42 / 0.2);
+  --border-accent: rgb(124 58 237 / 0.45);
+
+  --card-bg: rgb(255 255 255 / 0.94);
+  --card-border: rgb(124 58 237 / 0.18);
+  --card-shadow: 0 4px 20px rgb(15 23 42 / 0.07);
+  --card-shadow-hover: 0 12px 40px rgb(124 58 237 / 0.14);
+
+  --field-bg: rgb(15 23 42 / 0.04);
+  --field-border: rgb(15 23 42 / 0.12);
+  --field-placeholder: var(--slate-400);
+  --field-focus-ring: rgb(124 58 237 / 0.18);
+
+  --status-success: #16a34a;
+  --status-warning: #b45309;
+  --status-danger: #dc2626;
+
+  --fade-edge: #f0f4fb;
+  --popup-bg: linear-gradient(145deg, #ffffff, #f6f4ff);
+
+  --imp-text-color: var(--blue-600);
+  --section-background-color: linear-gradient(
+    to bottom left,
+    rgb(228 238 255 / 0.72),
+    rgb(240 248 255 / 0.88)
+  );
+  --image-gradient: linear-gradient(
+    to bottom left,
+    rgb(195 220 255 / 0.58),
+    rgb(210 232 255 / 0.72)
+  );
+}
