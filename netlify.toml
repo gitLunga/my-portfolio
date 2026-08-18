@@ -1,0 +1,29 @@
+# Netlify serves the site from the domain root, whereas GitHub Pages serves it
+# from /my-portfolio. package.json sets `homepage` for the GitHub Pages case;
+# overriding PUBLIC_URL here re-bases asset and router paths back to "/".
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "20"
+  PUBLIC_URL = "/"
+  CI = "false"
+
+# Single-page app: hand every unmatched path to index.html so React Router
+# can resolve it client-side instead of Netlify returning a 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

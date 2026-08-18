@@ -1,7 +1,15 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
+  "name": "lunga-ntshingila-portfolio",
+  "version": "1.0.0",
   "private": true,
+  "description": "Portfolio of Lunga Nhlakanipho Ntshingila — Computer Science graduate and full-stack developer based in Pretoria, South Africa.",
+  "author": "Lunga Nhlakanipho Ntshingila <lungamngomezulu10@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://gitlunga.github.io/my-portfolio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitLunga/my-portfolio.git"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^14.0.0",
@@ -27,7 +35,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "brand": "node scripts/generate-brand-assets.mjs",
+    "images": "node scripts/optimize-images.mjs"
   },
   "eslintConfig": {
     "extends": [
@@ -47,9 +57,15 @@
       "last 1 safari version"
     ]
   },
-  "description": "<h2 align=\"center\">\r   Portfolio Website - v2.0<br/>\r   <a href=\"https://soumyajit.vercel.app/\" target=\"_blank\">soumyajit.tech</a>\r </h2>\r <div align=\"center\">\r   <img alt=\"Demo\" src=\"./Images/readme-img1.png\" />\r </div>",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "portfolio",
+    "react",
+    "full-stack",
+    "software-developer",
+    "south-africa"
+  ],
+  "devDependencies": {
+    "puppeteer-core": "^24.43.1",
+    "sharp": "^0.35.3"
+  }
 }

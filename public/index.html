@@ -3,34 +3,89 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
+
+  <!--
+    ============================================================
+    SITE ORIGIN — change this ONE value if the domain changes.
+    Crawlers (LinkedIn, WhatsApp, X, Google) require ABSOLUTE
+    URLs, so og:/twitter: tags below cannot use %PUBLIC_URL%.
+    Current: GitHub Pages project site.
+    ============================================================
+  -->
+  <link rel="canonical" href="https://gitlunga.github.io/my-portfolio/" />
+
+  <title>Lunga Ntshingila | Full-Stack Developer &amp; Computer Science Graduate</title>
+  <meta name="description"
+    content="Lunga Nhlakanipho Ntshingila — Computer Science graduate and full-stack developer in Pretoria, South Africa. Building workflow engines, REST APIs and production web platforms with React, Node.js, PostgreSQL and .NET." />
+  <meta name="author" content="Lunga Nhlakanipho Ntshingila" />
+  <meta name="keywords"
+    content="Lunga Ntshingila, full-stack developer, software developer Pretoria, React developer South Africa, Node.js, PostgreSQL, computer science graduate, web developer Gauteng" />
+
+  <meta name="theme-color" content="#140f23" />
+  <link rel="icon" type="image/png" sizes="64x64" href="%PUBLIC_URL%/favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title> LN NTSHINGILA | Portfolio</title>
-  <meta name="description" content="Self Developed personal website build with React.js">
 
-  <!-- Google / Search Engine Tags -->
-  <meta itemprop="name" content="LN NTSHINGILA | Portfolio">
-  <meta itemprop="description" content="Self Developed personal website build with React.js">
-  <meta itemprop="image"
-    content="https://raw.githubusercontent.com/soumyajit4419/Portfolio/master/Images/readme-img.png?token=AK7VCIF5RYEUZZAURELPTAC76U6AK">
+  <!-- Font origins: opened early so the stylesheet request isn't serialised -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap"
+  />
 
-  <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://soumyajit.vercel.app">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Lunga | Portfolio">
-  <meta property="og:description" content="Self Developed personal website build with React.js">
-  <meta property="og:image"
-    content="https://raw.githubusercontent.com/soumyajit4419/Portfolio/master/Images/readme-img.png?token=AK7VCIF5RYEUZZAURELPTAC76U6AK">
+  <!-- Open Graph (LinkedIn, WhatsApp, Facebook, Slack) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Lunga Ntshingila" />
+  <meta property="og:url" content="https://gitlunga.github.io/my-portfolio/" />
+  <meta property="og:title" content="Lunga Ntshingila | Full-Stack Developer &amp; Computer Science Graduate" />
+  <meta property="og:description"
+    content="Computer Science graduate and full-stack developer in Pretoria. I build workflow engines, REST APIs and production web platforms with React, Node.js and PostgreSQL." />
+  <meta property="og:image" content="https://gitlunga.github.io/my-portfolio/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Lunga Ntshingila — Full-Stack Developer" />
+  <meta property="og:locale" content="en_ZA" />
 
-  <!-- Twitter Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LN NTSHINGILA | Portfolio">
-  <meta name="twitter:description" content="Self Developed personal website build with React.js">
-  <meta name="twitter:image"
-    content="https://raw.githubusercontent.com/soumyajit4419/Portfolio/master/Images/readme-img.png?token=AK7VCIF5RYEUZZAURELPTAC76U6AK">
+  <!-- X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lunga Ntshingila | Full-Stack Developer" />
+  <meta name="twitter:description"
+    content="Computer Science graduate and full-stack developer in Pretoria. React, Node.js, PostgreSQL, .NET." />
+  <meta name="twitter:image" content="https://gitlunga.github.io/my-portfolio/og-image.png" />
+
+  <!-- Structured data: helps Google render a knowledge-panel style result -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Lunga Nhlakanipho Ntshingila",
+      "url": "https://gitlunga.github.io/my-portfolio/",
+      "image": "https://gitlunga.github.io/my-portfolio/og-image.png",
+      "jobTitle": "Full-Stack Developer",
+      "email": "mailto:lungamngomezulu10@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pretoria",
+        "addressRegion": "Gauteng",
+        "addressCountry": "ZA"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Tshwane University of Technology"
+      },
+      "knowsAbout": [
+        "Full-Stack Development", "React", "Node.js", "PostgreSQL",
+        "ASP.NET Core", "TypeScript", "REST API Design", "React Native"
+      ],
+      "sameAs": [
+        "https://github.com/gitLunga",
+        "https://www.linkedin.com/in/lunga-ntshingila-9854742a9/"
+      ]
+    }
+  </script>
 </head>
 
 <body>
