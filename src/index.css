@@ -1,8 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+/*
+ * Font loading lives in public/index.html as a <link> with preconnect, not as
+ * a CSS @import — an @import here is discovered only after this stylesheet is
+ * fetched and parsed, which serialises the request and delays first paint.
+ */
 body {
   margin: 0;
-  font-family: "Raleway", serif !important;
+  /* The design uses weights 400-800; the previous stack requested only 500 and
+     fell back to `serif`, so every heading and <strong> was a synthesised
+     faux-bold in a mismatched family. */
+  font-family: "Raleway", "Segoe UI", system-ui, -apple-system, "Helvetica Neue",
+    Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to left, rgb(27 20 41), rgb(20 15 35));
+  background-image: var(--bg-page-gradient);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
 }

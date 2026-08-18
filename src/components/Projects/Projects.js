@@ -4,41 +4,41 @@ import ProjectCard from "../Projects/ProjectCards"
 import Particle from "../Particle"
 import { BsGithub } from "react-icons/bs"
 import { CgWebsite } from "react-icons/cg"
-import { MdClose, MdChevronLeft, MdChevronRight, MdCheckCircle } from "react-icons/md"
+import { MdClose, MdChevronLeft, MdChevronRight, MdCheckCircle, MdLock } from "react-icons/md"
 import { Reveal } from "../ScrollReveal"
 import { motion, AnimatePresence } from "framer-motion"
 
-import tsls from "../../Assets/Screenshot (162).png"
-import eComPic from "../../Assets/Projects/e -commerce pic.png"
-import hotelBookingPic from "../../Assets/Projects/hotelBookingPic.png"
-import TshwaneFindPic from "../../Assets/Projects/TshwaneFindPic.jpg"
+import tsls from "../../Assets/Screenshot (162).webp"
+import eComPic from "../../Assets/Projects/e -commerce pic.webp"
+import hotelBookingPic from "../../Assets/Projects/hotelBookingPic.webp"
+import TshwaneFindPic from "../../Assets/Projects/TshwaneFindPic.webp"
 
-import ninoServices  from "../../Assets/Projects/nino/nino-services.png"
-import ninoServices2 from "../../Assets/Projects/nino/nino-services2.png"
-import ninoServices3 from "../../Assets/Projects/nino/nino-services3.png"
-import ninoServices4 from "../../Assets/Projects/nino/nino-services4.png"
-import ninoServices5 from "../../Assets/Projects/nino/nino-services5.png"
-import ninoServices6 from "../../Assets/Projects/nino/nino-services6.png"
-import ninoServices7 from "../../Assets/Projects/nino/nino-services7.png"
+import ninoServices  from "../../Assets/Projects/nino/nino-services.webp"
+import ninoServices2 from "../../Assets/Projects/nino/nino-services2.webp"
+import ninoServices3 from "../../Assets/Projects/nino/nino-services3.webp"
+import ninoServices4 from "../../Assets/Projects/nino/nino-services4.webp"
+import ninoServices5 from "../../Assets/Projects/nino/nino-services5.webp"
+import ninoServices6 from "../../Assets/Projects/nino/nino-services6.webp"
+import ninoServices7 from "../../Assets/Projects/nino/nino-services7.webp"
 
-import djmega  from "../../Assets/Projects/djmega/mega-services.png"
-import djmega2 from "../../Assets/Projects/djmega/mega-services2.png"
-import djmega3 from "../../Assets/Projects/djmega/mega-services3.png"
-import djmega4 from "../../Assets/Projects/djmega/mega-services4.png"
+import djmega  from "../../Assets/Projects/djmega/mega-services.webp"
+import djmega2 from "../../Assets/Projects/djmega/mega-services2.webp"
+import djmega3 from "../../Assets/Projects/djmega/mega-services3.webp"
+import djmega4 from "../../Assets/Projects/djmega/mega-services4.webp"
 
-import phantom  from "../../Assets/Projects/phantom/phantom-services.png"
-import phantom2 from "../../Assets/Projects/phantom/phantom-services2.png"
-import phantom3 from "../../Assets/Projects/phantom/phantom-services3.png"
-import phantom4 from "../../Assets/Projects/phantom/phantom-services4.png"
-import phantom5 from "../../Assets/Projects/phantom/phantom-services5.png"
+import phantom  from "../../Assets/Projects/phantom/phantom-services.webp"
+import phantom2 from "../../Assets/Projects/phantom/phantom-services2.webp"
+import phantom3 from "../../Assets/Projects/phantom/phantom-services3.webp"
+import phantom4 from "../../Assets/Projects/phantom/phantom-services4.webp"
+import phantom5 from "../../Assets/Projects/phantom/phantom-services5.webp"
 
-import rvbHome from "../../Assets/Projects/rvb/Screenshot (227).png"
-import rvbber  from "../../Assets/Projects/rvb/rvb.png"
-import rvbber2 from "../../Assets/Projects/rvb/rvb2.png"
-import rvbber3 from "../../Assets/Projects/rvb/rvb3.png"
-import rvbber4 from "../../Assets/Projects/rvb/rvb4.png"
-import rvbber5 from "../../Assets/Projects/rvb/rvb5.png"
-import rvbber6 from "../../Assets/Projects/rvb/rvb6.png"
+import rvbHome from "../../Assets/Projects/rvb/Screenshot (227).webp"
+import rvbber  from "../../Assets/Projects/rvb/rvb.webp"
+import rvbber2 from "../../Assets/Projects/rvb/rvb2.webp"
+import rvbber3 from "../../Assets/Projects/rvb/rvb3.webp"
+import rvbber4 from "../../Assets/Projects/rvb/rvb4.webp"
+import rvbber5 from "../../Assets/Projects/rvb/rvb5.webp"
+import rvbber6 from "../../Assets/Projects/rvb/rvb6.webp"
 
 const techColors = {
   React: "#61dafb", "Node.js": "#339933", "AR Technology": "#ff6b6b",
@@ -59,7 +59,7 @@ const projectsData = [
     description:
       "A web application developed for TVH to streamline the management of various facilities, offering users an intuitive interface for booking and managing amenities. The system integrates multiple payment methods through APIs and incorporates augmented reality (AR) features.",
     ghLink: "https://github.com/KISMETtakk/TshwaneFind.git",
-    images: [TshwaneFindPic, TshwaneFindPic, TshwaneFindPic, TshwaneFindPic],
+    images: [TshwaneFindPic],
     technologies: ["React", "Node.js", "AR Technology", "Payment APIs", "MongoDB"],
     features: ["Facility booking and management", "Multiple payment gateway integration", "Augmented Reality (AR) features", "Real-time data access", "User authentication and role management"],
   },
@@ -70,8 +70,9 @@ const projectsData = [
     title: "Technical Support Logging System",
     description:
       "A web application that allows users to log technical support requests and track their issue status. Supports user authentication, role-based access control, and real-time communication between users and technician agents.",
-    ghLink: "https://github.com/gitLunga/Hotel-Booking-System.git",
-    images: [tsls, hotelBookingPic, hotelBookingPic, hotelBookingPic],
+    // Built during the ICEP internship — source is not public.
+    isPrivate: true,
+    images: [tsls],
     technologies: ["React", "Node.js", "Socket.io", "MongoDB", "JWT Authentication"],
     features: ["Technical support request logging", "Issue status tracking", "User authentication", "Role-based access control", "Real-time communication", "Admin dashboard for technicians"],
   },
@@ -83,7 +84,7 @@ const projectsData = [
     description:
       "A user-friendly e-commerce platform for buying and selling products online. Features product categorization, shopping cart, quantity adjustment, and simple payment integration.",
     ghLink: "https://github.com/gitLunga/basic-ecommerce-app.git",
-    images: [eComPic, eComPic, eComPic, eComPic],
+    images: [eComPic],
     technologies: ["React", "Redux", "Stripe API", "Firebase", "CSS3"],
     features: ["Product browsing and categorization", "Shopping cart functionality", "Quantity adjustment", "Payment integration", "Responsive web design"],
   },
@@ -95,7 +96,7 @@ const projectsData = [
     description:
       "A comprehensive web application for browsing hotel rooms, booking accommodations, and managing reservations — with authentication, role-based access, and real-time communication.",
     ghLink: "https://github.com/gitLunga/Hotel-Booking-System.git",
-    images: [hotelBookingPic, hotelBookingPic, hotelBookingPic, hotelBookingPic],
+    images: [hotelBookingPic],
     technologies: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
     features: ["Room browsing and search", "Real-time availability", "Booking management", "User authentication", "Admin and customer roles", "Integrated payment"],
   },
@@ -277,6 +278,12 @@ function ProjectPopup({ project, onClose }) {
 
             {/* Action buttons */}
             <div className="popup-actions">
+              {project.isPrivate && (
+                <span className="popup-action-btn popup-btn-ghost popup-btn-disabled" title="Source code is not public">
+                  <MdLock size={17} />
+                  Private source
+                </span>
+              )}
               {project.ghLink && (
                 <a href={project.ghLink} target="_blank" rel="noreferrer" className="popup-action-btn popup-btn-ghost">
                   <BsGithub size={18} />
@@ -317,7 +324,7 @@ function Projects() {
           <h1 className="project-heading">
             My Recent <strong className="purple">Works</strong>
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.6)" }}>
+          <p className="project-subheading">
             Here are a few projects I've worked on recently.
           </p>
         </Reveal>
@@ -367,6 +374,7 @@ function Projects() {
                   description={project.description}
                   ghLink={project.ghLink}
                   demoLink={project.demoLink}
+                  isPrivate={project.isPrivate}
                   onViewDetails={() => setSelected(project)}
                 />
               </motion.div>
@@ -375,7 +383,7 @@ function Projects() {
         </motion.div>
 
         {filtered.length === 0 && (
-          <p style={{ color: "rgba(255,255,255,0.4)", textAlign: "center", padding: "40px 0" }}>
+          <p className="projects-empty">
             No projects in this category yet.
           </p>
         )}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import portfolioLogo from "../Assets/portfolioLogo.png";
+import portfolioLogo from "../Assets/portfolioLogo.webp";
 import { Link, useLocation } from "react-router-dom";
 import {
   AiOutlineHome,

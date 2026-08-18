@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/LUNGA PRO PHOTO.png";
+import myImg from "../../Assets/LUNGA PRO PHOTO.webp";
 import Tilt from "react-parallax-tilt";
 import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { Reveal, StaggerReveal, RevealItem } from "../ScrollReveal";
-import { useInView } from "framer-motion";
+import { useInView, useReducedMotion } from "framer-motion";
 
 /* ─── Animated counter ───────────────────────────────────── */
 function CountUp({ target, suffix = "", duration = 1600 }) {
@@ -14,10 +14,18 @@ function CountUp({ target, suffix = "", duration = 1600 }) {
   const ref = useRef(null);
   const triggered = useRef(false);
   const isInView = useInView(ref, { once: true, amount: 0.6 });
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     if (!isInView || triggered.current) return;
     triggered.current = true;
+
+    // A ticking number is motion. Anyone who asked for less of it should
+    // simply be given the figure.
+    if (reduce) {
+      setCount(target);
+      return;
+    }
 
     let start = null;
     const easeOut = (t) => 1 - Math.pow(1 - t, 3);
@@ -29,7 +37,7 @@ function CountUp({ target, suffix = "", duration = 1600 }) {
       if (progress < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
-  }, [isInView, target, duration]);
+  }, [isInView, target, duration, reduce]);
 
   return (
     <span ref={ref} className="stats-value purple">
