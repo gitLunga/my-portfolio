@@ -153,7 +153,12 @@ function StudioQuote() {
       <Reveal variant="fadeUp" delay={0.2}>
         <div className="studio-quote-summary">
           <span className="studio-quote-summary-label">Estimated range</span>
-          <span className="studio-quote-summary-price">
+          {/* data-testid rather than matching the rendered text: JSX renders
+              each {expr} as its own text node, and the tier-option buttons
+              above contain the same "R600" / "R1 000" fragments, so a
+              getByText("R600 – R1 000") assertion is ambiguous about which
+              element it means. */}
+          <span className="studio-quote-summary-price" data-testid="quote-total">
             {formatZAR(totals.min)} – {formatZAR(totals.max)}
           </span>
           <p className="studio-quote-summary-note">
