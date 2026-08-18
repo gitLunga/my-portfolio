@@ -1,0 +1,42 @@
+# Validates every push and pull request against main: tests pass, the
+# production build succeeds. Separate from static.yml (which deploys) so a
+# broken PR fails visibly without touching the live site — deploy only runs
+# on push to main, this runs on every PR too.
+#
+# Deliberately calls `npm test` / `npm run build` rather than the underlying
+# tool directly (react-scripts today) — if the build tool changes, this
+# workflow doesn't have to.
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        env:
+          CI: true
+        run: npm test
+
+      - name: Build
+        env:
+          CI: false
+        run: npm run build
