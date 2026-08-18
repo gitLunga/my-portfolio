@@ -443,7 +443,14 @@ button:focus {
 }
 
 .blockquote-footer {
-  color: #88b0c0;
+  color: var(--text-muted);
+}
+
+/* Was an inline style with a hardcoded lavender that never adapted for
+   light mode (2.1:1 on a pale background) — same root cause as the other
+   untokenized colors this audit found. */
+.quote-highlight {
+  color: var(--accent);
 }
 
 /* --------- */
@@ -912,7 +919,23 @@ button:focus {
 /* ===================== */
 
 .purple {
-  color: #c770f0;
+  /* var(--accent) resolves to this exact value in dark mode (no visual
+     change there) but to a darker violet in light mode — the hardcoded
+     value here was the dark-theme accent used unconditionally, which is
+     why every ".purple" span failed contrast against a light background
+     (~2.7:1 against ~4.5:1 required). */
+  color: var(--accent);
+}
+
+/* The footer's background never changes with theme (see .footer above) — a
+   handful of its headings/links were already given fixed light-mode-proof
+   colors for exactly that reason. .purple was missed: on a light page it
+   would resolve to the *light*-theme accent, which is too dark to read on
+   the footer's permanently-dark background. Pinned to the dark-theme
+   primitive directly rather than the token, since it must never follow the
+   page theme here. */
+.footer .purple {
+  color: var(--violet-300);
 }
 
 /* ===================== */
@@ -926,9 +949,21 @@ button:focus {
 
 .home-badge {
   display: inline-block;
-  background: linear-gradient(135deg, rgba(199, 112, 240, 0.15), rgba(95, 157, 248, 0.15));
-  border: 1px solid rgba(199, 112, 240, 0.4);
-  color: #c770f0;
+  /* Was a hardcoded dark-theme-only gradient tint + text color with no
+     light-theme override — the text stayed dark-theme purple while the
+     background blended toward the light page bg, dropping to 1.62:1.
+     var(--accent-tint) alone fixed the theme mismatch but not the ratio: the
+     hero has decorative blurred gradient orbs behind it, and a translucent
+     10-14% tint lets enough of that variable backdrop show through to still
+     fail depending on where a blob happens to sit. Mixing in --bg-elevated
+     (94%/75% opaque) makes the badge itself opaque enough that what's behind
+     it stops mattering. */
+  /* 14% measured at ~4.5:1 in light mode — right on the AA boundary rather
+     than clearly past it. 9% keeps the tint visible while landing with real
+     margin. */
+  background: color-mix(in srgb, var(--accent) 9%, var(--bg-elevated) 91%);
+  border: 1px solid var(--border-accent);
+  color: var(--accent);
   padding: 4px 16px;
   border-radius: 50px;
   font-size: 0.85rem;
@@ -2167,7 +2202,12 @@ button:focus {
 }
 
 .flip-back-name {
-  color: var(--text-primary);
+  /* Fixed, not var(--text-primary): the card back is always the dark
+     gradient below regardless of theme (no [data-theme="light"] override
+     exists for .flip-card-back), but --text-primary flips to near-black in
+     light mode. Following the token here would put dark text on a dark
+     surface — this stays light on purpose. */
+  color: #f8fafc;
   font-size: 0.78rem;
   font-weight: 700;
 }
@@ -2899,7 +2939,7 @@ body {
   box-shadow: 0 8px 28px rgba(124, 58, 237, 0.14);
 }
 [data-theme="light"] .stats-label {
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 /* --- About section --- */
@@ -2934,15 +2974,15 @@ body {
   box-shadow: 0 12px 40px rgba(124, 58, 237, 0.12);
 }
 [data-theme="light"] .exp-subtitle {
-  color: #64748b;
+  color: var(--text-muted);
 }
 [data-theme="light"] .exp-location-dot {
-  color: #94a3b8;
+  color: var(--text-faint);
 }
 [data-theme="light"] .exp-toggle-btn {
   background: rgba(0, 0, 0, 0.05);
   border-color: rgba(0, 0, 0, 0.1);
-  color: #64748b;
+  color: var(--text-muted);
 }
 [data-theme="light"] .exp-toggle-btn:hover {
   background: rgba(124, 58, 237, 0.1);
@@ -2957,7 +2997,7 @@ body {
 [data-theme="light"] .filter-tab {
   background: rgba(0, 0, 0, 0.04);
   border-color: rgba(0, 0, 0, 0.1);
-  color: #64748b;
+  color: var(--text-muted);
 }
 [data-theme="light"] .filter-tab:hover {
   border-color: rgba(124, 58, 237, 0.35);
@@ -2980,7 +3020,7 @@ body {
   color: #1e293b;
 }
 [data-theme="light"] .contact-subheading {
-  color: #64748b;
+  color: var(--text-muted);
 }
 [data-theme="light"] .contact-info-card {
   background: rgba(255, 255, 255, 0.96);
@@ -2996,7 +3036,7 @@ body {
   color: #1e293b;
 }
 [data-theme="light"] .contact-info-desc {
-  color: #64748b;
+  color: var(--text-muted);
 }
 [data-theme="light"] .form-input-custom {
   background: rgba(0, 0, 0, 0.04);
@@ -3004,7 +3044,7 @@ body {
   color: #1e293b;
 }
 [data-theme="light"] .form-input-custom::placeholder {
-  color: #94a3b8;
+  color: var(--field-placeholder);
 }
 [data-theme="light"] .form-input-custom:focus {
   background: rgba(255, 255, 255, 0.95);
@@ -3121,4 +3161,36 @@ body {
 .route-error-btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+
+/* ========================= */
+/* SKIP LINK                 */
+/* ========================= */
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 12px;
+  z-index: 2000;
+  background: var(--accent-gradient);
+  color: var(--text-on-accent);
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: top var(--dur-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  top: 12px;
+  outline: 2px solid var(--text-on-accent);
+  outline-offset: 2px;
+}
+
+/* Programmatic-only focus target (tabIndex={-1}) — it can never be reached
+   by pressing Tab, only by the skip link or a route change, so the default
+   focus ring would just be visual noise around the whole page. */
+main:focus {
+  outline: none;
 }

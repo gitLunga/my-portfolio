@@ -1,4 +1,5 @@
 import React from "react";
+import { accessibleTextColor, DARK_SURFACE } from "../../utils/accessibleColor";
 import { CgCPlusPlus } from "react-icons/cg";
 import {
   DiJavascript1, DiReact, DiNodejs, DiGit,
@@ -9,7 +10,7 @@ import {
   SiTailwindcss, SiFirebase, SiRedux, SiExpress,
 } from "react-icons/si";
 
-const row1 = [
+const row1raw = [
   { icon: DiJava,        name: "Java",        color: "#f89820", category: "Backend" },
   { icon: CgCPlusPlus,   name: "C#",          color: "#239120", category: "Backend" },
   { icon: DiJavascript1, name: "JavaScript",  color: "#f7df1e", category: "Language" },
@@ -21,7 +22,7 @@ const row1 = [
   { icon: SiDotnet,      name: ".NET",        color: "#512bd4", category: "Backend" },
 ];
 
-const row2 = [
+const row2raw = [
   { icon: DiHtml5,       name: "HTML5",      color: "#e34f26", category: "Frontend" },
   { icon: DiCss3,        name: "CSS3",       color: "#1572b6", category: "Frontend" },
   { icon: SiTailwindcss, name: "Tailwind",   color: "#38bdf8", category: "Frontend" },
@@ -33,7 +34,17 @@ const row2 = [
   { icon: DiGit,         name: "Git",        color: "#f05032", category: "DevOps" },
 ];
 
-function TechCard({ icon: Icon, name, color, category }) {
+// Several of these brand colors (dark blues/greens especially — TypeScript,
+// Node, .NET, MySQL) read at ~3-4:1 against the flip-card's dark back face,
+// short of the 4.5:1 small text needs. Precomputed once here rather than
+// per render since the palette is static.
+const withCategoryColor = (list) =>
+  list.map((t) => ({ ...t, categoryColor: accessibleTextColor(t.color, DARK_SURFACE, 4.5) }));
+
+const row1 = withCategoryColor(row1raw);
+const row2 = withCategoryColor(row2raw);
+
+function TechCard({ icon: Icon, name, color, category, categoryColor }) {
   return (
     <div className="flip-card">
       <div className="flip-card-inner">
@@ -49,7 +60,7 @@ function TechCard({ icon: Icon, name, color, category }) {
             <Icon style={{ color, fontSize: "1.6rem" }} />
           </div>
           <span className="flip-back-name">{name}</span>
-          <span className="flip-back-category" style={{ color }}>{category}</span>
+          <span className="flip-back-category" style={{ color: categoryColor }}>{category}</span>
         </div>
       </div>
     </div>

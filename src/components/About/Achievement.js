@@ -2,6 +2,8 @@ import React from "react";
 import { MdEmojiEvents, MdTrendingUp } from "react-icons/md";
 import { GiTrophy } from "react-icons/gi";
 import { StaggerReveal, RevealItem } from "../ScrollReveal";
+import { useTheme } from "../../context/ThemeContext";
+import { accessibleTextColor, DARK_SURFACE, LIGHT_SURFACE } from "../../utils/accessibleColor";
 
 const achievements = [
   {
@@ -28,13 +30,16 @@ const achievements = [
 ];
 
 function Achievements() {
+  const { theme } = useTheme();
+  const surface = theme === "light" ? LIGHT_SURFACE : DARK_SURFACE;
+
   return (
     <StaggerReveal className="row" style={{ justifyContent: "center", paddingBottom: "50px" }} stagger={0.13} delayChildren={0.05}>
       {achievements.map((a, i) => (
         <RevealItem key={i} variant="zoomIn" className="col-md-4 achievement-card">
           <div className="achievement-card-view" style={{ "--ach-color": a.color }}>
             <div className="achievement-icon" style={{ color: a.color }}>{a.icon}</div>
-            <h5 className="achievement-title" style={{ color: a.color }}>{a.title}</h5>
+            <h3 className="achievement-title" style={{ color: accessibleTextColor(a.color, surface, 4.5) }}>{a.title}</h3>
             <p className="achievement-year">{a.year}</p>
             <p className="achievement-desc">{a.description}</p>
           </div>

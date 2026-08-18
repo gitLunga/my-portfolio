@@ -3,6 +3,8 @@ import { Col, Row } from "react-bootstrap";
 import { MdWork, MdCalendarToday, MdLocationOn, MdExpandMore, MdExpandLess } from "react-icons/md";
 import { FaCode, FaBuilding } from "react-icons/fa";
 import { StaggerReveal, RevealItem } from "../ScrollReveal";
+import { useTheme } from "../../context/ThemeContext";
+import { accessibleTextColor, tintedBackground, DARK_SURFACE, LIGHT_SURFACE } from "../../utils/accessibleColor";
 
 const experiences = [
   {
@@ -64,6 +66,14 @@ const experiences = [
 
 function ExperienceCard({ exp, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen);
+  const { theme } = useTheme();
+  const surface = theme === "light" ? LIGHT_SURFACE : DARK_SURFACE;
+  // Text uses of badgeColor need to clear contrast against the timeline
+  // card's themed background; the decorative uses below (icon, borders,
+  // low-alpha tints) keep the raw color, since WCAG's text requirement
+  // doesn't apply to them and softening them buys nothing.
+  const companyColor = accessibleTextColor(exp.badgeColor, surface, 3.0); // 19px bold clears the large-text threshold
+  const badgeTextColor = accessibleTextColor(exp.badgeColor, surface, 4.5);
 
   return (
     <div className={`experience-timeline-card exp-card-${open ? "open" : "closed"}`}>
@@ -73,11 +83,11 @@ function ExperienceCard({ exp, defaultOpen = false }) {
         </div>
 
         <div className="exp-title-block">
-          <h4 className="exp-company">
-            <strong style={{ color: exp.badgeColor }}>{exp.company}</strong>
+          <h3 className="exp-company">
+            <strong style={{ color: companyColor }}>{exp.company}</strong>
             {exp.subtitle && <span className="exp-subtitle"> · {exp.subtitle}</span>}
             <span className="exp-role"> — {exp.role}</span>
-          </h4>
+          </h3>
           <div className="exp-meta-row">
             <p className="exp-date">
               <MdCalendarToday size={13} style={{ marginRight: "5px" }} />
@@ -92,7 +102,7 @@ function ExperienceCard({ exp, defaultOpen = false }) {
         </div>
 
         <div className="exp-header-right">
-          <span className="exp-badge" style={{ color: exp.badgeColor, borderColor: `${exp.badgeColor}50`, background: `${exp.badgeColor}12` }}>
+          <span className="exp-badge" style={{ color: badgeTextColor, borderColor: `${exp.badgeColor}50`, background: `${exp.badgeColor}12` }}>
             {exp.badge}
           </span>
           <button className="exp-toggle-btn" aria-label="toggle">
@@ -133,7 +143,21 @@ function ExperienceCard({ exp, defaultOpen = false }) {
                 key={t}
                 className="exp-tech-badge"
                 style={{
-                  color: exp.techColors[t] || "#aaa",
+                  // The badge's own background is this same color at ~6%
+                  // alpha over the card surface (`${color}10` below) — not
+                  // a flat surface. Computing that exact blend, rather than
+                  // approximating with the flat surface color, gets much
+                  // closer to what the badge actually renders. It's still
+                  // not perfect: `surface` is itself a flat stand-in for a
+                  // real card-over-page-gradient stack, so 5.2 (not 4.5)
+                  // leaves enough headroom to absorb that remaining
+                  // approximation error instead of landing short by a few
+                  // tenths on some colors, as 4.5 measured at ~4.0-4.4.
+                  color: accessibleTextColor(
+                    exp.techColors[t] || "#aaa",
+                    tintedBackground(exp.techColors[t] || "#aaa", surface, 0x10 / 255),
+                    5.2
+                  ),
                   borderColor: `${exp.techColors[t] || "#aaa"}45`,
                   background: `${exp.techColors[t] || "#aaa"}10`,
                 }}

@@ -62,9 +62,9 @@ function Home2() {
         <Row className="align-items-center">
           <Col md={8} className="home-about-description">
             <Reveal variant="fadeLeft" delay={0}>
-              <h1 style={{ fontSize: "2.6em" }}>
+              <h2 style={{ fontSize: "2.6em" }}>
                 LET ME <span className="purple"> INTRODUCE </span> MYSELF
-              </h1>
+              </h2>
             </Reveal>
             <Reveal variant="fadeUp" delay={0.15} duration={0.7}>
               <p className="home-about-body">
@@ -117,7 +117,7 @@ function Home2() {
         <Row>
           <Col md={12} className="home-about-social">
             <Reveal variant="fadeUp" delay={0.1}>
-              <h1>FIND ME ON</h1>
+              <h2>FIND ME ON</h2>
               <p>Feel free to <span className="purple">connect </span>with me</p>
             </Reveal>
             <Reveal variant="fadeUp" delay={0.22}>

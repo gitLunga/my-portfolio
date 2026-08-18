@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState, useEffect, useCallback, useRef } from "react"
 import { Container } from "react-bootstrap"
 import ProjectCard from "../Projects/ProjectCards"
 import Particle from "../Particle"
@@ -6,6 +6,9 @@ import { BsGithub } from "react-icons/bs"
 import { CgWebsite } from "react-icons/cg"
 import { MdClose, MdChevronLeft, MdChevronRight, MdCheckCircle, MdLock } from "react-icons/md"
 import { Reveal } from "../ScrollReveal"
+import { useFocusTrap } from "../../hooks/useFocusTrap"
+import { useTheme } from "../../context/ThemeContext"
+import { accessibleTextColor, tintedBackground, DARK_SURFACE, LIGHT_SURFACE } from "../../utils/accessibleColor"
 import { motion, AnimatePresence } from "framer-motion"
 
 import tsls from "../../Assets/Screenshot (162).webp"
@@ -155,9 +158,14 @@ const projectsData = [
 ];
 
 /* ─── Custom Popup Modal ─────────────────────────────────────── */
-function ProjectPopup({ project, onClose }) {
+function ProjectPopup({ project, onClose, returnFocusRef }) {
   const [imgIdx, setImgIdx] = useState(0);
   const [animIn, setAnimIn] = useState(false);
+  const panelRef = useRef(null);
+  const { theme } = useTheme();
+  const surface = theme === "light" ? LIGHT_SURFACE : DARK_SURFACE;
+
+  useFocusTrap(panelRef, { returnFocusRef });
 
   useEffect(() => {
     requestAnimationFrame(() => setAnimIn(true));
@@ -181,12 +189,19 @@ function ProjectPopup({ project, onClose }) {
 
   return (
     <div className={`popup-overlay${animIn ? " popup-overlay-in" : ""}`} onClick={(e) => e.target === e.currentTarget && close()}>
-      <div className={`popup-panel${animIn ? " popup-panel-in" : ""}`}>
+      <div
+        ref={panelRef}
+        className={`popup-panel${animIn ? " popup-panel-in" : ""}`}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-popup-title"
+        tabIndex={-1}
+      >
 
         {/* Header */}
         <div className="popup-header">
           <div className="popup-title-row">
-            <h3 className="popup-title">{project.title}</h3>
+            <h2 className="popup-title" id="project-popup-title">{project.title}</h2>
             {project.demoLink && (
               <span className="popup-live-badge">● Live</span>
             )}
@@ -243,7 +258,7 @@ function ProjectPopup({ project, onClose }) {
 
             {/* Tech badges */}
             <div className="popup-section">
-              <h6 className="popup-section-title">Tech Stack</h6>
+              <h3 className="popup-section-title">Tech Stack</h3>
               <div className="popup-badges">
                 {project.technologies.map((t) => (
                   <span
@@ -252,7 +267,15 @@ function ProjectPopup({ project, onClose }) {
                     style={{
                       background: `${techColors[t] || "#6b7280"}18`,
                       border: `1px solid ${techColors[t] || "#6b7280"}50`,
-                      color: techColors[t] || "#d1d5db",
+                      // Exact blend of this badge's own tint (`${color}18`,
+                      // ~9.4% alpha) over the popup surface, plus a margin
+                      // above the real 4.5 target — see Experience.js's
+                      // exp-tech-badge for why.
+                      color: accessibleTextColor(
+                        techColors[t] || "#6b7280",
+                        tintedBackground(techColors[t] || "#6b7280", surface, 0x18 / 255),
+                        5.2
+                      ),
                     }}
                   >
                     {t}
@@ -264,7 +287,7 @@ function ProjectPopup({ project, onClose }) {
             {/* Features */}
             {project.features && (
               <div className="popup-section">
-                <h6 className="popup-section-title">Key Features</h6>
+                <h3 className="popup-section-title">Key Features</h3>
                 <ul className="popup-features">
                   {project.features.map((f, i) => (
                     <li key={i} className="popup-feature-item">
@@ -311,6 +334,11 @@ const FILTERS = ["All", "Full-Stack", "E-Commerce", "Frontend"];
 function Projects() {
   const [selected, setSelected] = useState(null);
   const [activeFilter, setActiveFilter] = useState("All");
+  // Captured explicitly rather than relying on document.activeElement at
+  // close time: the grid re-animates on filter changes, so the button that
+  // was actually clicked may no longer be the thing focus would land back
+  // on if we only tracked "whatever was focused before opening".
+  const triggerRef = useRef(null);
 
   const filtered = activeFilter === "All"
     ? projectsData
@@ -319,7 +347,10 @@ function Projects() {
   return (
     <Container fluid className="project-section">
       <Particle />
-      <Container>
+      {/* Hidden from assistive tech while the dialog is open — the focus
+          trap already keeps keyboard focus from reaching it, this keeps a
+          screen reader's virtual cursor out too. */}
+      <Container aria-hidden={selected ? "true" : undefined}>
         <Reveal variant="blurUp" delay={0}>
           <h1 className="project-heading">
             My Recent <strong className="purple">Works</strong>
@@ -375,7 +406,7 @@ function Projects() {
                   ghLink={project.ghLink}
                   demoLink={project.demoLink}
                   isPrivate={project.isPrivate}
-                  onViewDetails={() => setSelected(project)}
+                  onViewDetails={(e) => { triggerRef.current = e.currentTarget; setSelected(project); }}
                 />
               </motion.div>
             ))}
@@ -389,7 +420,13 @@ function Projects() {
         )}
       </Container>
 
-      {selected && <ProjectPopup project={selected} onClose={() => setSelected(null)} />}
+      {selected && (
+        <ProjectPopup
+          project={selected}
+          onClose={() => setSelected(null)}
+          returnFocusRef={triggerRef}
+        />
+      )}
     </Container>
   );
 }

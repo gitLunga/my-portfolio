@@ -25,12 +25,12 @@ function Home() {
               </HeroReveal>
 
               <HeroReveal variant="fadeLeft" delay={0.15} duration={0.7}>
-                <h1 style={{ paddingBottom: 10 }} className="heading">
+                <p style={{ paddingBottom: 10 }} className="heading">
                   Hi There!{" "}
                   <span className="wave" role="img" aria-labelledby="wave">
                     👋🏻
                   </span>
-                </h1>
+                </p>
               </HeroReveal>
 
               <HeroReveal variant="fadeLeft" delay={0.28} duration={0.7}>

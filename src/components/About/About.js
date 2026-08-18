@@ -31,30 +31,30 @@ function About() {
         </Row>
 
         <Reveal variant="blurUp" delay={0}>
-          <h1 className="project-heading">
+          <h2 className="project-heading">
             Professional <strong className="purple">Skillset</strong>
-          </h1>
+          </h2>
         </Reveal>
         <Techstack />
 
         <Reveal variant="blurUp" delay={0}>
-          <h1 className="project-heading">
+          <h2 className="project-heading">
             <strong className="purple">Tools</strong> I use
-          </h1>
+          </h2>
         </Reveal>
         <Toolstack />
 
         <Reveal variant="blurUp" delay={0}>
-          <h1 className="project-heading">
+          <h2 className="project-heading">
             <strong className="purple">Professional Experience</strong>
-          </h1>
+          </h2>
         </Reveal>
         <Experience />
 
         <Reveal variant="blurUp" delay={0}>
-          <h1 className="project-heading">
+          <h2 className="project-heading">
             <strong className="purple">Achievements</strong>
-          </h1>
+          </h2>
         </Reveal>
         <Achievement />
       </Container>

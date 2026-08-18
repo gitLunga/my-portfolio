@@ -73,7 +73,7 @@ function Contact() {
           <Col md={4} className="contact-info-col">
             <Reveal variant="fadeLeft" delay={0.1} duration={0.7}>
             <div className="contact-info-card">
-              <h3 className="contact-info-title">Let's Connect</h3>
+              <h2 className="contact-info-title">Let's Connect</h2>
               <p className="contact-info-desc">
                 I'm currently open to new opportunities and interesting projects.
                 Whether you have a question or just want to say hi — my inbox is always open!
@@ -116,7 +116,7 @@ function Contact() {
           <Col md={8} className="contact-form-col">
             <Reveal variant="fadeRight" delay={0.2} duration={0.7}>
             <div className="contact-form-card">
-              <h3 className="contact-form-title">Send a Message</h3>
+              <h2 className="contact-form-title">Send a Message</h2>
               <Form onSubmit={handleSubmit} className="contact-form">
                 <Row>
                   <Col md={6}>

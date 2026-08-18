@@ -37,7 +37,7 @@ function ProjectCards({ imgPath, title, description, ghLink, demoLink, isBlog, i
       </div>
 
       <Card.Body className="project-card-body">
-        <Card.Title as="h3" className="project-card-title">{title}</Card.Title>
+        <Card.Title as="h2" className="project-card-title">{title}</Card.Title>
         <Card.Text className="project-card-text">{description}</Card.Text>
 
         <div className="project-card-actions">

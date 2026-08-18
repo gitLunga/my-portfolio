@@ -11,7 +11,7 @@ function Footer() {
     <Container fluid className="footer">
       <Row className="footer-inner">
         <Col md={4} className="footer-brand-col">
-          <h4 className="footer-name purple">Lunga.dev</h4>
+          <h2 className="footer-name purple">Lunga.dev</h2>
           <p className="footer-tagline">Building digital experiences that matter.</p>
         </Col>
 

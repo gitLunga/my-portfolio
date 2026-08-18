@@ -60,20 +60,32 @@ function App() {
         <BackToTop />
         <Preloader load={load} />
         <div className="App" id={load ? "no-scroll" : "scroll"}>
+          {/* First focusable element on every page. Off-screen until it
+              receives keyboard focus, at which point it becomes the fastest
+              way past the nav for anyone not using a pointer. */}
+          <a href="#main-content" className="skip-link">
+            Skip to content
+          </a>
           <Navbar />
           <ScrollToTop />
-          <ErrorBoundary>
-            <Suspense fallback={<RouteFallback />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/project" element={<Projects />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/resume" element={<Resume />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={<Navigate to="/" replace />} />
-              </Routes>
-            </Suspense>
-          </ErrorBoundary>
+          {/* The only <main> landmark in the app — also what the skip link
+              and route-to-route focus reset (ScrollToTop) target. tabIndex
+              makes it focusable so activating the skip link actually moves
+              keyboard focus, not just the scroll position. */}
+          <main id="main-content" tabIndex={-1}>
+            <ErrorBoundary>
+              <Suspense fallback={<RouteFallback />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/project" element={<Projects />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/resume" element={<Resume />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
+              </Suspense>
+            </ErrorBoundary>
+          </main>
           <Footer />
         </div>
       </Router>

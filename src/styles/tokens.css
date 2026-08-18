@@ -149,8 +149,14 @@
 
   --text-primary: var(--slate-800);
   --text-secondary: var(--slate-600);
-  --text-muted: var(--slate-500);
-  --text-faint: var(--slate-400);
+  /* One step darker than the dark-theme mapping would suggest (slate-500,
+     slate-400): audited against the actual rendered page — those values
+     read fine on paper but landed at 2.5-4.3:1 on real card and gradient
+     backgrounds here, short of the 4.5:1 AA text requires. slate-600 and
+     slate-500 clear it with real margin (~6.9:1 / ~4.8:1) on every
+     background this token is actually used against. */
+  --text-muted: var(--slate-600);
+  --text-faint: var(--slate-500);
   --text-on-accent: #ffffff;
 
   --accent: var(--violet-500);

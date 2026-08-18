@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
+import { Reveal } from "../ScrollReveal";
 import myResumePdf from "../../Assets/Lunga Nhlakanipho Ntshingil2.pdf"; // Make sure this path is correct
 
 
@@ -25,6 +26,13 @@ function ResumeNew() {
     <div>
       <Container fluid className="resume-section">
         <Particle />
+        <Row style={{ justifyContent: "center" }}>
+          <Reveal variant="blurUp" delay={0}>
+            <h1 className="project-heading" style={{ textAlign: "center" }}>
+              My <strong className="purple">Resume</strong>
+            </h1>
+          </Reveal>
+        </Row>
         <Row style={{ justifyContent: "center", position: "relative" }}>
           <Button
             variant="primary"
