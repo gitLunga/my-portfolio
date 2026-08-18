@@ -42,6 +42,10 @@ const Contact = lazy(() => import("./components/Contact/Contact"));
 // never downloads it.
 const StudioLayout = lazy(() => import("./studio/layout/StudioLayout"));
 const StudioHome = lazy(() => import("./studio/pages/StudioHome"));
+const StudioServices = lazy(() => import("./studio/pages/StudioServices"));
+const StudioWork = lazy(() => import("./studio/pages/StudioWork"));
+const StudioProcess = lazy(() => import("./studio/pages/StudioProcess"));
+const StudioQuote = lazy(() => import("./studio/pages/StudioQuote"));
 
 function RouteFallback() {
   return <div className="route-loading" aria-busy="true" aria-live="polite" />;
@@ -93,6 +97,10 @@ function App() {
                       structurally separate from the routes above. */}
                   <Route path="/studio" element={<StudioLayout />}>
                     <Route index element={<StudioHome />} />
+                    <Route path="services" element={<StudioServices />} />
+                    <Route path="work" element={<StudioWork />} />
+                    <Route path="process" element={<StudioProcess />} />
+                    <Route path="quote" element={<StudioQuote />} />
                   </Route>
 
                   <Route path="*" element={<Navigate to="/" replace />} />

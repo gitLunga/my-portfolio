@@ -149,14 +149,22 @@
 
   --text-primary: var(--slate-800);
   --text-secondary: var(--slate-600);
-  /* One step darker than the dark-theme mapping would suggest (slate-500,
-     slate-400): audited against the actual rendered page — those values
-     read fine on paper but landed at 2.5-4.3:1 on real card and gradient
-     backgrounds here, short of the 4.5:1 AA text requires. slate-600 and
-     slate-500 clear it with real margin (~6.9:1 / ~4.8:1) on every
-     background this token is actually used against. */
+  /*
+     --text-muted was slate-500, --text-faint slate-400, one step darker
+     than the dark-theme mapping would suggest: audited against the actual
+     rendered page, those landed at 2.5-4.3:1 on real card and gradient
+     backgrounds, short of the 4.5:1 AA text requires. Moved to slate-600 /
+     slate-500 (Phase 3).
+     --text-faint at slate-500 still measured a bare 4.756:1 on pure white —
+     "enough margin, barely" — and Phase 5 found the gap: 4.31:1 against a
+     realistic pale-tinted background (a process-step duration label), not
+     the pure white it was checked against. Matches --text-muted now; the
+     two tokens read identically in light mode, trading away a subtle
+     hairline distinction for a margin that actually holds on real
+     backgrounds instead of just the best-case one.
+  */
   --text-muted: var(--slate-600);
-  --text-faint: var(--slate-500);
+  --text-faint: var(--slate-600);
   --text-on-accent: #ffffff;
 
   --accent: var(--violet-500);

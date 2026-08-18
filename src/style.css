@@ -3590,3 +3590,528 @@ main:focus {
     padding: 40px 0 40px;
   }
 }
+
+/* ========================= */
+/* STUDIO — SHARED PAGE      */
+/* ========================= */
+
+.studio-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+.studio-page-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.studio-page-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 65ch;
+  margin-bottom: 48px;
+}
+
+.studio-page-subtitle a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ========================= */
+/* STUDIO — SERVICES PAGE    */
+/* ========================= */
+
+.studio-services-category {
+  margin-bottom: 48px;
+}
+
+.studio-services-category-heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.studio-tier-card {
+  height: 100%;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  margin-bottom: 24px;
+  transition: border-color var(--dur-base), transform var(--dur-base);
+}
+
+.studio-tier-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-4px);
+}
+
+.studio-tier-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.studio-tier-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.studio-tier-pages {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.studio-tier-price {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.studio-tier-includes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.studio-tier-includes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.studio-tier-check {
+  color: var(--status-success);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.studio-services-faq {
+  margin-top: 64px;
+}
+
+.studio-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.studio-faq-item h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.studio-faq-item p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.studio-faq-item a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ========================= */
+/* STUDIO — WORK PAGE        */
+/* ========================= */
+
+.studio-work-empty {
+  text-align: center;
+  padding: 64px 24px;
+  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  border: 1px dashed var(--border-strong);
+}
+
+.studio-work-empty-icon {
+  color: var(--text-faint);
+  margin-bottom: 16px;
+}
+
+.studio-work-empty h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.studio-work-empty p {
+  color: var(--text-secondary);
+  max-width: 55ch;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.studio-work-empty a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.studio-work-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  margin-bottom: 24px;
+  height: 100%;
+}
+
+.studio-work-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.studio-work-card-body {
+  padding: 20px;
+}
+
+.studio-work-industry {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.studio-work-client {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 6px 0 10px;
+}
+
+.studio-work-summary {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.studio-work-outcome {
+  color: var(--status-success);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.studio-work-testimonial {
+  border-left: 3px solid var(--border-accent);
+  padding-left: 14px;
+  margin: 16px 0;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.studio-work-testimonial cite {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.studio-work-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+/* ========================= */
+/* STUDIO — PROCESS PAGE     */
+/* ========================= */
+
+.studio-process-timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.studio-process-step {
+  display: flex;
+  gap: 20px;
+}
+
+.studio-process-step-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.studio-process-step-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-tint);
+  color: var(--accent);
+  border: 2px solid var(--border-accent);
+  flex-shrink: 0;
+}
+
+.studio-process-step-line {
+  width: 2px;
+  flex: 1;
+  min-height: 40px;
+  background: var(--border-subtle);
+  margin-top: 4px;
+}
+
+.studio-process-step-body {
+  padding-bottom: 40px;
+  flex: 1;
+}
+
+.studio-process-step-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.studio-process-step-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.studio-process-step-duration {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.studio-process-step-desc {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* ========================= */
+/* STUDIO — QUOTE ESTIMATOR  */
+/* ========================= */
+
+.studio-quote-step {
+  margin-bottom: 40px;
+}
+
+.studio-quote-step-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.studio-quote-tier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.studio-quote-tier-option {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--dur-fast), background var(--dur-fast);
+}
+
+.studio-quote-tier-option:hover {
+  border-color: var(--border-accent);
+}
+
+.studio-quote-tier-option-active {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}
+
+.studio-quote-tier-option-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.studio-quote-tier-option-price {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.studio-quote-addon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.studio-quote-addon-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--dur-fast), background var(--dur-fast);
+}
+
+.studio-quote-addon-option:hover {
+  border-color: var(--border-accent);
+}
+
+.studio-quote-addon-option-active {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}
+
+.studio-quote-addon-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 1.5px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.studio-quote-addon-option-active .studio-quote-addon-check {
+  border-color: var(--accent);
+}
+
+.studio-quote-addon-label {
+  flex: 1;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.studio-quote-addon-price {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.studio-quote-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.studio-quote-field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.studio-quote-summary {
+  text-align: center;
+  padding: 40px 24px;
+  border-radius: var(--radius-lg);
+  background: var(--accent-tint);
+  border: 1px solid var(--border-accent);
+}
+
+.studio-quote-summary-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.studio-quote-summary-price {
+  display: block;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.studio-quote-summary-note {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  max-width: 45ch;
+  margin: 0 auto 24px;
+}
+
+.studio-quote-submit {
+  margin-bottom: 12px;
+}
+
+.studio-quote-email-fallback {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .studio-faq-grid {
+    grid-template-columns: 1fr;
+  }
+  .studio-page {
+    padding: 40px 16px 60px;
+  }
+}
+
+/* ========================= */
+/* STUDIO — LIGHT-MODE TEXT  */
+/* ========================= */
+/*
+ * Same root cause each time: var(--accent) in the studio's light theme
+ * (#d94e00) tops out at 4.17:1 even against pure white — it's fine as a
+ * background/border/button fill, but as small TEXT on a light surface it
+ * falls short of the 4.5:1 AA requires. --accent-strong (5.75:1 on white)
+ * fixes it. Scoped to light only, everywhere: --accent-strong is darker in
+ * both themes, and dark mode's var(--accent) already passes on its own —
+ * swapping it unconditionally would fix light mode by breaking dark mode,
+ * which is exactly the mistake made and reverted once already on
+ * .studio-category-title (see its comment above).
+ */
+[data-theme="light"] .studio-subnav-link-active,
+[data-theme="light"] .studio-page-subtitle a,
+[data-theme="light"] .studio-faq-item a,
+[data-theme="light"] .studio-work-empty a {
+  color: var(--accent-strong);
+}
