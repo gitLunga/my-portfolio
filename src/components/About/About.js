@@ -7,6 +7,7 @@ import laptopImg from "../../Assets/about.webp";
 import Toolstack from "./Toolstack";
 import Achievement from "./Achievement";
 import Experience from "./Experience";
+import Github from "./Github";
 import { Reveal } from "../ScrollReveal";
 
 function About() {
@@ -50,6 +51,13 @@ function About() {
           </h2>
         </Reveal>
         <Experience />
+
+        <Reveal variant="blurUp" delay={0}>
+          <h2 className="project-heading">
+            Days I <strong className="purple">Code</strong>
+          </h2>
+        </Reveal>
+        <Github />
 
         <Reveal variant="blurUp" delay={0}>
           <h2 className="project-heading">
