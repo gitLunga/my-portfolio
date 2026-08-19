@@ -15,8 +15,15 @@ function renderNavbar() {
 
 test("renders every primary nav destination, including Studio", () => {
   renderNavbar();
+  // { hidden: true } — this test doesn't import bootstrap.min.css (only
+  // App.js does), so the real .navbar-collapse.collapse { display: none }
+  // rule never actually applies here and these queries pass either way.
+  // Included anyway so this stays correct if that ever changes — see
+  // App.test.js's "Studio entry point" test for the full explanation of
+  // why the collapsed nav is expected, accurate behaviour under jsdom
+  // rather than something to work around.
   for (const name of [/home/i, /about/i, /projects/i, /resume/i, /studio/i, /contact/i]) {
-    expect(screen.getByRole("link", { name })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name, hidden: true })).toBeInTheDocument();
   }
 });
 
@@ -30,8 +37,8 @@ test("the theme toggle button flips data-theme on <html>", () => {
 });
 
 test("the scroll listener is cleaned up on unmount (regression: it used to attach a new one on every render)", () => {
-  const addSpy = jest.spyOn(window, "addEventListener");
-  const removeSpy = jest.spyOn(window, "removeEventListener");
+  const addSpy = vi.spyOn(window, "addEventListener");
+  const removeSpy = vi.spyOn(window, "removeEventListener");
 
   const { unmount } = renderNavbar();
   const scrollAddCalls = addSpy.mock.calls.filter(([event]) => event === "scroll").length;

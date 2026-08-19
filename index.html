@@ -9,7 +9,7 @@
     ============================================================
     SITE ORIGIN — change this ONE value if the domain changes.
     Crawlers (LinkedIn, WhatsApp, X, Google) require ABSOLUTE
-    URLs, so og:/twitter: tags below cannot use %PUBLIC_URL%.
+    URLs, so og:/twitter: tags below can't use a relative path.
     Current: GitHub Pages project site.
     ============================================================
   -->
@@ -23,10 +23,18 @@
     content="Lunga Ntshingila, full-stack developer, software developer Pretoria, React developer South Africa, Node.js, PostgreSQL, computer science graduate, web developer Gauteng" />
 
   <meta name="theme-color" content="#140f23" />
-  <link rel="icon" type="image/png" sizes="64x64" href="%PUBLIC_URL%/favicon.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/icon-192.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
+    Root-relative paths, not %PUBLIC_URL% — that was CRA's templating
+    syntax and Vite doesn't process it. Vite instead treats any /path
+    reference in this file as pointing into public/, and rewrites it with
+    the configured base (see vite.config.js) at build time, which is
+    exactly the same "works on both GitHub Pages' subpath and Netlify's
+    root" behaviour the old %PUBLIC_URL% gave us.
+  -->
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
 
   <!-- Font origins: opened early so the stylesheet request isn't serialised -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -91,6 +99,10 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
+  <!-- Vite's entry point convention: a module script referencing the real
+       source file, rather than CRA/webpack injecting a compiled bundle
+       reference automatically. -->
+  <script type="module" src="/src/index.js"></script>
 </body>
 
 </html>

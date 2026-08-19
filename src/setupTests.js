@@ -4,6 +4,17 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
+// @testing-library/react is supposed to auto-register `afterEach(cleanup)`
+// when it detects a global test-framework `afterEach` — which both Jest and
+// Vitest (with `test.globals: true`) expose — but relying on the bare
+// global here didn't reliably clean up between tests (a setup file runs
+// before Vitest's globals injection is guaranteed to be live at module
+// evaluation time). Importing afterEach directly from vitest sidesteps
+// that ambiguity entirely.
+import { afterEach } from 'vitest';
+import { cleanup } from '@testing-library/react';
+afterEach(cleanup);
+
 // jsdom doesn't implement matchMedia at all — every component that reads a
 // media query (ThemeContext's OS-preference fallback, framer-motion's
 // useReducedMotion, the reduced-motion CSS checks) would otherwise throw
@@ -46,3 +57,8 @@ window.IntersectionObserver = class IntersectionObserver {
 // A no-op stub is enough: tests don't assert anything about the particle
 // canvas's actual pixels.
 HTMLCanvasElement.prototype.getContext = () => null;
+
+// jsdom doesn't implement window.scrollTo either — ScrollToTop.js calls it
+// on every route change (including the initial mount), and jsdom logs a
+// "Not implemented" error rather than silently no-op'ing.
+window.scrollTo = () => {};

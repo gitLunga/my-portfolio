@@ -63,10 +63,14 @@ function App() {
     <ThemeProvider>
       {/*
         GitHub Pages serves this project at /my-portfolio, Netlify at /.
-        PUBLIC_URL carries whichever the build targeted, so routes resolve
-        correctly on both without a second codepath.
+        import.meta.env.BASE_URL carries whichever vite.config.js's `base`
+        was set to for this build (the Vite equivalent of CRA's PUBLIC_URL),
+        so routes resolve correctly on both without a second codepath.
+        Trailing slash stripped — React Router's basename expects "/foo",
+        not "/foo/", and for the root case ("/") that strip correctly
+        produces "", which basename treats the same as no base at all.
       */}
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
         <CustomCursor />
         <BackToTop />
         <Preloader load={load} />

@@ -1,8 +1,4 @@
-# Build the React app and deploy the compiled output to GitHub Pages.
-#
-# NOTE: the previous version of this workflow uploaded `path: '.'` — the raw
-# repository — and never ran a build. There is no index.html at the repo root
-# (it lives in public/), so Pages had nothing to serve. This builds first.
+# Build the site with Vite and deploy the compiled output to GitHub Pages.
 name: Deploy to GitHub Pages
 
 on:
@@ -36,9 +32,13 @@ jobs:
         run: npm ci
 
       - name: Build
-        # CI=true turns warnings into errors on CRA; we lint separately.
+        # GitHub Pages serves this project from /my-portfolio/, not the
+        # domain root — VITE_BASE_PATH drives vite.config.js's `base` option
+        # so every asset/route reference in the built output is prefixed
+        # correctly. Netlify's build (netlify.toml) doesn't set this and
+        # gets Vite's default "/" instead, since it deploys at the root.
         env:
-          CI: false
+          VITE_BASE_PATH: /my-portfolio/
         run: npm run build
 
       # GitHub Pages has no SPA rewrite rule. Serving the same document as

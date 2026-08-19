@@ -14,7 +14,7 @@ function Probe() {
 // jsdom's matchMedia isn't implemented by default — stub it so
 // getInitialTheme's OS-preference fallback has something to read.
 function mockMatchMedia(prefersLight) {
-  window.matchMedia = jest.fn().mockImplementation((query) => ({
+  window.matchMedia = vi.fn().mockImplementation((query) => ({
     matches: query === "(prefers-color-scheme: light)" ? prefersLight : false,
     media: query,
     addListener: () => {},
