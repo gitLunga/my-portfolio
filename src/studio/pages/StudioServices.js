@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MdCheckCircle } from "react-icons/md";
-import { HiArrowRight } from "react-icons/hi";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import { Reveal, StaggerReveal, RevealItem } from "../../components/ScrollReveal";
 import { PACKAGE_CATEGORIES, priceRange } from "../data/packages";
 
@@ -35,7 +34,7 @@ function StudioServices() {
                   <ul className="studio-tier-includes">
                     {tier.includes.map((item) => (
                       <li key={item}>
-                        <MdCheckCircle size={16} className="studio-tier-check" />
+                        <CheckCircle2 size={16} className="studio-tier-check" />
                         {item}
                       </li>
                     ))}
@@ -84,7 +83,7 @@ function StudioServices() {
       <Reveal variant="fadeUp" delay={0}>
         <div className="studio-packages-cta">
           <Link to="/studio/quote" className="studio-btn studio-btn-primary">
-            Get a Personalised Quote <HiArrowRight />
+            Get a Personalised Quote <ArrowRight size={18} />
           </Link>
         </div>
       </Reveal>

@@ -1,46 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { HiArrowRight } from "react-icons/hi";
-import {
-  MdOutlineChatBubbleOutline,
-  MdOutlineDesignServices,
-  MdOutlineCode,
-  MdOutlineRocketLaunch,
-  MdOutlineSupportAgent,
-} from "react-icons/md";
+import { ArrowRight, MessageCircle, PenTool, Code2, Rocket, LifeBuoy } from "lucide-react";
 import { Reveal, StaggerReveal, RevealItem } from "../../components/ScrollReveal";
 
 const STEPS = [
   {
-    icon: MdOutlineChatBubbleOutline,
+    icon: MessageCircle,
     title: "Brief",
     duration: "Day 1",
     body:
       "A short WhatsApp or call to understand what you need: pages, must-have features, examples of sites you like, and your budget range.",
   },
   {
-    icon: MdOutlineDesignServices,
+    icon: PenTool,
     title: "Design",
     duration: "Days 2–3",
     body:
       "A layout preview built around your content and brand colors, so you can see the site's shape before any real development starts.",
   },
   {
-    icon: MdOutlineCode,
+    icon: Code2,
     title: "Build",
     duration: "Days 3–7",
     body:
       "The site gets built section by section. You'll get progress updates rather than radio silence until the big reveal.",
   },
   {
-    icon: MdOutlineRocketLaunch,
+    icon: Rocket,
     title: "Launch",
     duration: "Day 7–8",
     body:
       "Final review, any last tweaks, then the site goes live on your domain (or one I help you register).",
   },
   {
-    icon: MdOutlineSupportAgent,
+    icon: LifeBuoy,
     title: "Support",
     duration: "Ongoing",
     body:
@@ -84,7 +77,7 @@ function StudioProcess() {
       <Reveal variant="fadeUp" delay={0}>
         <div className="studio-packages-cta">
           <Link to="/studio/quote" className="studio-btn studio-btn-primary">
-            Start With a Brief <HiArrowRight />
+            Start With a Brief <ArrowRight size={18} />
           </Link>
         </div>
       </Reveal>

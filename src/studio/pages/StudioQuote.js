@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
-import { MdCheck } from "react-icons/md";
-import { HiArrowRight } from "react-icons/hi";
+import { Check, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "../../components/ScrollReveal";
 import { ALL_TIERS, formatZAR, STUDIO_CONTACT, buildWhatsAppLink } from "../data/packages";
 
@@ -107,7 +107,19 @@ function StudioQuote() {
                   aria-pressed={checked}
                 >
                   <span className="studio-quote-addon-check">
-                    {checked && <MdCheck size={16} />}
+                    <AnimatePresence>
+                      {checked && (
+                        <motion.span
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0, opacity: 0 }}
+                          transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                          style={{ display: "flex" }}
+                        >
+                          <Check size={16} />
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
                   </span>
                   <span className="studio-quote-addon-label">{addOn.label}</span>
                   <span className="studio-quote-addon-price">
@@ -171,7 +183,7 @@ function StudioQuote() {
             rel="noreferrer"
             className="studio-btn studio-btn-primary studio-quote-submit"
           >
-            Send This to WhatsApp <HiArrowRight />
+            Send This to WhatsApp <ArrowRight size={18} />
           </a>
           <a href={`mailto:${STUDIO_CONTACT.email}?subject=${encodeURIComponent("Website quote request")}&body=${encodeURIComponent(waMessage)}`} className="studio-quote-email-fallback">
             or email it instead

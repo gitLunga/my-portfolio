@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MdOutlineWorkOutline } from "react-icons/md";
-import { HiArrowRight } from "react-icons/hi";
+import { ArrowRight } from "lucide-react";
 import { Reveal, StaggerReveal, RevealItem } from "../../components/ScrollReveal";
+import LottiePlayer from "../components/LottiePlayer";
+import comingSoonAnimation from "../assets/lottie/coming-soon.json";
 import { CLIENT_WORK } from "../data/clientWork";
 import { STUDIO_CONTACT, buildWhatsAppLink } from "../data/packages";
 
@@ -20,7 +21,7 @@ function StudioWork() {
       {CLIENT_WORK.length === 0 ? (
         <Reveal variant="fadeUp" delay={0.1}>
           <div className="studio-work-empty">
-            <MdOutlineWorkOutline size={40} className="studio-work-empty-icon" />
+            <LottiePlayer animationData={comingSoonAnimation} className="studio-work-empty-lottie" />
             <h2>Case studies coming soon</h2>
             <p>
               Lungas Web Lab is newly public — client projects will be added here as they
@@ -59,7 +60,7 @@ function StudioWork() {
                   )}
                   {project.liveLink && (
                     <a href={project.liveLink} target="_blank" rel="noreferrer" className="studio-work-link">
-                      Visit site <HiArrowRight />
+                      Visit site <ArrowRight size={16} />
                     </a>
                   )}
                 </div>
@@ -72,7 +73,7 @@ function StudioWork() {
       <Reveal variant="fadeUp" delay={0}>
         <div className="studio-packages-cta">
           <Link to="/studio/quote" className="studio-btn studio-btn-primary">
-            Start Your Project <HiArrowRight />
+            Start Your Project <ArrowRight size={18} />
           </Link>
         </div>
       </Reveal>

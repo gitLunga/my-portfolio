@@ -25,6 +25,15 @@
   --accent-tint: rgb(242 92 5 / 0.14);
   --accent-tint-strong: rgb(242 92 5 / 0.26);
   --border-accent: rgb(242 92 5 / 0.45);
+
+  /* Studio's own display face — Raleway (the portfolio-wide body font)
+     still handles paragraph copy here, but headings/hero/nav-brand use
+     this instead, so the studio pages read as their own product rather
+     than a re-skinned portfolio page. Defined once on the base
+     [data-brand="studio"] rule (not per-theme) since it doesn't vary
+     with light/dark — the [data-brand="studio"][data-theme="light"]
+     rule below only needs to redeclare the tokens that DO vary. */
+  --font-display: "Sora", "Raleway", -apple-system, sans-serif;
 }
 
 [data-brand="studio"][data-theme="light"] {

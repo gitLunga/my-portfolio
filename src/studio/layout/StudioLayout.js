@@ -3,8 +3,10 @@ import { Outlet, NavLink, Link } from "react-router-dom";
 import { STUDIO_CONTACT, buildWhatsAppLink } from "../data/packages";
 // Imported here rather than in App.js: this way it ships only in the
 // studio route's own lazy chunk, not the main bundle every visitor pays
-// for regardless of whether they ever open /studio.
-import "../styles/studio-tokens.css";
+// for regardless of whether they ever open /studio. studio.css pulls in
+// studio-tokens.css itself, so this one import covers both the color/font
+// tokens and every studio component rule.
+import "../styles/studio.css";
 
 const SUB_NAV = [
   { to: "/studio", label: "Overview", end: true },

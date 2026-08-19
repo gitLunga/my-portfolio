@@ -1,24 +1,25 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { MdSpeed, MdOutlineAttachMoney, MdChatBubbleOutline } from "react-icons/md";
-import { HiArrowRight } from "react-icons/hi";
+import { Zap, Wallet, MessageCircle, ArrowRight } from "lucide-react";
 import { Reveal, StaggerReveal, RevealItem } from "../../components/ScrollReveal";
+import LottiePlayer from "../components/LottiePlayer";
+import heroAccentAnimation from "../assets/lottie/hero-accent.json";
 import { PACKAGE_CATEGORIES, priceRange, STUDIO_CONTACT, buildWhatsAppLink } from "../data/packages";
 
 const PILLARS = [
   {
-    icon: MdSpeed,
+    icon: Zap,
     title: "Fast turnaround",
     body: "Most sites launch in days, not months — you'll see progress every step of the way.",
   },
   {
-    icon: MdOutlineAttachMoney,
+    icon: Wallet,
     title: "Fair, transparent pricing",
     body: "Every package has a clear price range up front. No surprise invoices.",
   },
   {
-    icon: MdChatBubbleOutline,
+    icon: MessageCircle,
     title: "WhatsApp-first",
     body: "Talk to me directly — no ticket systems, no runaround. Quick questions get quick answers.",
   },
@@ -29,8 +30,8 @@ function StudioHome() {
     <>
       <Container fluid className="studio-hero-section">
         <Container>
-          <Row className="align-items-center">
-            <Col md={8}>
+          <div className="studio-hero-grid">
+            <div className="studio-hero-content">
               <Reveal variant="fadeUp" delay={0}>
                 <span className="studio-hero-badge">Available for new projects</span>
                 <h1 className="studio-hero-title">
@@ -45,7 +46,7 @@ function StudioHome() {
                 </p>
                 <div className="studio-hero-cta-row">
                   <Link to="/studio/quote" className="studio-btn studio-btn-primary">
-                    Get a Quote <HiArrowRight />
+                    Get a Quote <ArrowRight size={18} />
                   </Link>
                   <a
                     href={buildWhatsAppLink(`Hi ${STUDIO_CONTACT.ownerName}, I'd like to ask about a website.`)}
@@ -57,8 +58,11 @@ function StudioHome() {
                   </a>
                 </div>
               </Reveal>
-            </Col>
-          </Row>
+            </div>
+            <div className="studio-hero-visual">
+              <LottiePlayer animationData={heroAccentAnimation} className="studio-lottie" />
+            </div>
+          </div>
         </Container>
       </Container>
 
@@ -108,7 +112,7 @@ function StudioHome() {
         <Reveal variant="fadeUp" delay={0.1}>
           <div className="studio-packages-cta">
             <Link to="/studio/services" className="studio-btn studio-btn-outline">
-              See full pricing & what's included <HiArrowRight />
+              See full pricing & what's included <ArrowRight size={18} />
             </Link>
           </div>
         </Reveal>
@@ -124,7 +128,7 @@ function StudioHome() {
             </p>
             <div className="studio-hero-cta-row studio-cta-banner-row">
               <Link to="/studio/quote" className="studio-btn studio-btn-primary">
-                Start a Quote <HiArrowRight />
+                Start a Quote <ArrowRight size={18} />
               </Link>
               <a href={`mailto:${STUDIO_CONTACT.email}`} className="studio-btn studio-btn-outline">
                 Email Me
