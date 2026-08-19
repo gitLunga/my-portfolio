@@ -1,7 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
-import CustomCursor from "./components/CustomCursor";
 import BackToTop from "./components/BackToTop";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer";
@@ -71,7 +70,6 @@ function App() {
         produces "", which basename treats the same as no base at all.
       */}
       <Router basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-        <CustomCursor />
         <BackToTop />
         <Preloader load={load} />
         <div className="App" id={load ? "no-scroll" : "scroll"}>

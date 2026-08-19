@@ -2627,60 +2627,6 @@ button:focus {
 }
 
 /* ================================ */
-/* CUSTOM CURSOR                    */
-/* ================================ */
-
-body.custom-cursor-active,
-body.custom-cursor-active * {
-  cursor: none;
-}
-
-.cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #c770f0;
-  pointer-events: none;
-  z-index: 999999;
-  margin-top: -4px;
-  margin-left: -4px;
-  box-shadow: 0 0 8px #c770f0, 0 0 16px #c770f080;
-}
-
-.cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(199, 112, 240, 0.55);
-  pointer-events: none;
-  z-index: 999998;
-  margin-top: -17px;
-  margin-left: -17px;
-  background: rgba(199, 112, 240, 0.03);
-}
-
-.cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 999997;
-  margin-top: -45px;
-  margin-left: -45px;
-  background: radial-gradient(circle, rgba(199,112,240,0.35) 0%, transparent 70%);
-  filter: blur(6px);
-}
-
-/* ================================ */
 /* PROJECT FILTER TABS              */
 /* ================================ */
 
@@ -3079,8 +3025,7 @@ body {
 /*
  * Honours the OS-level "reduce motion" setting. Framer Motion animations are
  * short-circuited in ScrollReveal.js; this covers the CSS-driven motion —
- * the waving hand, the particle field, tilt/hover transforms and the custom
- * cursor, which is pure decorative movement.
+ * the waving hand, the particle field and tilt/hover transforms.
  *
  * Durations are near-zero rather than `none` so transition-dependent state
  * (hover, focus) still settles instead of being cancelled mid-flight.
@@ -3102,18 +3047,8 @@ body {
     animation: none;
   }
 
-  #tsparticles,
-  .cursor-dot,
-  .cursor-ring,
-  .cursor-glow {
+  #tsparticles {
     display: none;
-  }
-
-  /* The custom cursor sets `cursor: none` globally — restore the real one
-     so the pointer never disappears when the custom cursor is suppressed. */
-  body.custom-cursor-active,
-  body.custom-cursor-active * {
-    cursor: auto;
   }
 }
 /* ========================= */
