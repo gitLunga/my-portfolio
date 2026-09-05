@@ -3,7 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
 import { Reveal } from "../ScrollReveal";
-import myResumePdf from "../../Assets/Lunga Nhlakanipho Ntshingil2.pdf"; // Make sure this path is correct
+import myResumePdf from "../../Assets/LN_NTSHINGILA_CV_Final2.pdf"; // Make sure this path is correct
 
 
 
